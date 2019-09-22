@@ -1,17 +1,29 @@
 <?php
 function euler_1($n) {
-    $result = 0;
+    $result = [
+        'terms' => [],
+        'answer' => 0
+    ];
     $x = $n/3;
     $y = $n/5;
     for ($i = 1;$i<$x;$i++) {
-        $result += 3 * $i;
+        $result['answer'] += 3 * $i;
+        array_push($result['terms'],3 * $i);
     }
     for ($i = 1;$i<$y;$i++) {
-        // If statement to make sure we haven't already added the number as a multiple of 3
         if (!(5*$i % 3 == 0)) {
-            $result += 5 * $i;
+            $result['answer'] += 5 * $i;
+            array_push($result['terms'],5 * $i);
         }
     }
-    return $result;
+    sort($result['terms']);
+    if (count($result['terms']) == 0) {
+        $result['answer'] = 0;
+    }
+    return json_encode($result);
 }
-echo euler_1(1000); // Returns 233168
+
+$v = $_REQUEST['val'];
+
+echo euler_1($v);
+?>
