@@ -1,4 +1,4 @@
-# project-euler
+# Project Euler
 My attempts at solving the Project Euler problems in a variety of languages.
 
 When getting further into this challenge I decided it would be appropriate to solve each problem in a variety of languages, particularly:

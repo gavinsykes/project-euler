@@ -1,8 +1,22 @@
-# n! means n x (n - 1) x ... x 3 x 2 x 1
+import sys
+sys.path.insert(1,'../')
 
-# For example, 10! = 10 x 9 x ... x 3 x 2 x 1 = 3628800, and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
+import argparse
+import time
+from python_functions import factorial
 
-# Find the sum of the digits in the number 100!
+parser = argparse.ArgumentParser(description = 'Find the sum of the digits in x!')
+parser.add_argument('--num', default = 100, type = int, help = 'Insert x here, it must be a positive integer. It defaults to 100 to correspond with the Project Euler Problem at https://projecteuler.net/problem=20')
+x = parser.parse_args().num
+
+timing = {}
+
+if ( (x < 1) and (not isinstance(x, int)) ):
+    raise Exception('You entered {}, which is neither an integer nor larger than 1!'.format(x))
+if (x < 1):
+    raise Exception('You entered {}, which is less than 1, please try a positive integer.'.format(x))
+if (not isinstance(x,int)):
+    raise Exception('You entered {}, which is not an integer, please try a positive integer.'.format(x))
 
 def euler_20(n):
     result = 0
@@ -10,14 +24,10 @@ def euler_20(n):
         result += int(i)
     return result
 
-def factorial(n):
-    if (type(n) != int or n < 1):
-        return undefined
-    if (n == 1 or n == 2):
-        return n
-    result = [1,2]
-    for i in range(2,n,1):
-        result.append((i+1) * result[i-1])
-    return result[n-1]
-
-print euler_20(100) # Returns 648
+timing['start'] = time.time()
+result = euler_20(x)
+timing['finish'] = time.time()
+print(timing['start'])
+print(result) # Returns 648 when x = 100
+print(timing['finish'])
+print('This returns {} in {} seconds!'.format(result,timing['finish']-timing['start']))
