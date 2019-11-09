@@ -12,8 +12,9 @@ function euler_2($n) {
     $i = 1;
     while (fibonacci($i) < $n) {
         $i++;
-        if (!(fibonacci($i) & 1)) {
-            $result += fibonacci($i);
+        $f = fibonacci($i);
+        if (!($f & 1)) {
+            $result += $f;
         }
     }
     return $result;
