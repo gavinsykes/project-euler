@@ -19,10 +19,10 @@ def euler_1(n):
     x = n/3
     y = n/5
 
-    for i in range (1 to x):
+    for i in range (1,int(x)):
         result += 3*i
 
-    for i in range (1 to y):
+    for i in range (1,int(y)):
         if (5*i % 3 != 0):
             result += 5*i
 
@@ -32,6 +32,6 @@ timing['start'] = time.time()
 result = euler_1(x)
 timing['finish'] = time.time()
 print(timing['start'])
-print(euler_2(1000)) # Returns 4613732 when x = 4000000
+print(result) # Returns 232169 when x = 1000
 print(timing['finish'])
 print('This returns {} in {} seconds!'.format(result,timing['finish']-timing['start']))
