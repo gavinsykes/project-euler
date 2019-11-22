@@ -1,4 +1,4 @@
-const largestPalindromProduct = n => {
+const largestPalindromeProduct = n => {
     let result = 0;
     if (n < 1 || Number.isInteger(n)) {
         return undefined;
@@ -13,8 +13,8 @@ const largestPalindromProduct = n => {
     }
 }
 const isPalindrome = s => {
-    s = s.toString();
     if (s.length === 1) {
         return true;
     }
+    return !s.toString().split('').filter(i => /\S/.test(i)).map((c,i,a) => c == a[a.length - 1 - i] ? true : false).some(i => i === false);
 }
