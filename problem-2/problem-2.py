@@ -42,7 +42,8 @@ def fibonacci(n):
 timing['start'] = time.time()
 result = euler_2(x)
 timing['finish'] = time.time()
-print(timing['start'])
-print(result) # Returns 4613732 when x = 4000000
-print(timing['finish'])
+print('Find the sum of the even-valued Fibonacci terms up to {}.'.format(x))
+print('Start time: {}'.format(timing['start']))
+print('Result: {}'.format(result)) # Returns 4613732 when x = 4000000
+print('End time: {}'.format(timing['finish']))
 print('This returns {} in {} seconds!'.format(result,timing['finish']-timing['start']))

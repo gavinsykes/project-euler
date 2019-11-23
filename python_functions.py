@@ -1,5 +1,5 @@
 def factorial(n):
-    if (type(n) != int or n < 1):
+    if (n < 1 or (not isinstance(n,int))):
         return undefined
     if (n == 1 or n == 2):
         return n
@@ -8,11 +8,14 @@ def factorial(n):
         result.append((i+1) * result[i-1])
     return result[n-1]
 
-def is_palindrome(n):
-    if(str(n) == str(n)[::-1]):
+def is_palindrome(s):
+    if(str(s) == str(s)[::-1]):
         return True
 
 def is_prime(n):
+    if (n < 1 or (not isinstance(n,int))):
+        return undefined
+
     if(not(n & 1)):
         return False
 

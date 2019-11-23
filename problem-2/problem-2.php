@@ -11,11 +11,10 @@ function euler_2($n) {
     }
     return $result;
 }
-echo euler_2(4000000); // Returns 4613732
-// Function to work out the fibonacci numbers. Done as an array because it is much much faster than using a recursive function.
+
 function fibonacci($n) {
     if (!is_int($n) || $n < 1) {
-        return undefined; // Didn't really need this as I'm controlling the input, but you just never know.
+        return undefined;
     }
     if ($n == 1 || $n == 2) {
         return $n;
@@ -26,4 +25,8 @@ function fibonacci($n) {
     }
     return $result[$n-1];
 }
+
+$v = $_REQUEST['val'];
+
+echo euler_2($v);
 ?>

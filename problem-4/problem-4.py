@@ -32,7 +32,8 @@ def largest_palindrome_product(n):
 timing['start'] = time.time()
 result = largest_palindrome_product(x)
 timing['finish'] = time.time()
-print(timing['start'])
-print(result) # Returns 906609 when x = 3
-print(timing['finish'])
+print('Find the largest palindrome made from the product of 2 numbers of {} digits.'.format(x))
+print('Start time: {}'.format(timing['start']))
+print('Result: {}'.format(result)) # Returns 906609 when x = 3
+print('End time: {}'.format(timing['finish']))
 print('This returns {} in {} seconds!'.format(result,timing['finish']-timing['start']))

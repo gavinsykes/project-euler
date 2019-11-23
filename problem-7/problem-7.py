@@ -32,7 +32,8 @@ def nth_prime(n):
 timing['start'] = time.time()
 result = nth_prime(x)
 timing['finish'] = time.time()
-print(timing['start'])
-print(result) # Returns 104763 when x = 10001
-print(timing['finish'])
+print('What is the {}th prime number?'.format(x))
+print('Start time: {}'.format(timing['start']))
+print('Result: {}'.format(result)) # Returns 104763 when x = 10001
+print('End time: {}'.format(timing['finish']))
 print('This returns {} in {} seconds!'.format(result,timing['finish']-timing['start']))

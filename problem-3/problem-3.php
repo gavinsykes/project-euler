@@ -22,3 +22,8 @@ function gen_max_prime($n) {
 
     return $result;
 }
+
+$v = $_REQUEST['val'];
+
+echo gen_max_prime($v);
+?>

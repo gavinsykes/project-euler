@@ -37,7 +37,8 @@ def gen_max_prime(n):
 timing['start'] = time.time()
 result = gen_max_prime(x)
 timing['finish'] = time.time()
-print(timing['start'])
-print(result) # Returns 6857 when x = 600851475143
-print(timing['finish'])
+print('Find the largest prime factor of x.'.format(x))
+print('Start time: {}'.format(timing['start']))
+print('Result: {}'.format(result)) # Returns 6857 when x = 600851475143
+print('End time: {}'.format(timing['finish']))
 print('This returns {} in {} seconds!'.format(result,timing['finish']-timing['start']))

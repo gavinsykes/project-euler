@@ -31,7 +31,8 @@ def euler_1(n):
 timing['start'] = time.time()
 result = euler_1(x)
 timing['finish'] = time.time()
-print(timing['start'])
-print(result) # Returns 232169 when x = 1000
-print(timing['finish'])
+print('Find the sum of all the multiples of 3 or 5 below {}:'.format(x))
+print('Start time: {}'.format(timing['start']))
+print('Result: {}'.format(result)) # Returns 232169 when x = 1000
+print('End time: {}'.format(timing['finish']))
 print('This returns {} in {} seconds!'.format(result,timing['finish']-timing['start']))
