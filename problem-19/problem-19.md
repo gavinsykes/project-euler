@@ -6,4 +6,4 @@ You are given the following information, but you may prefer to do some research 
 
 How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?
 
-Luckily straightaway we needn't worry about the third rul too much, as we know that a leap yesr didn't happen in 1900 but did in 2000, and that all other years divisible by 4 are a leap year.
+Luckily straightaway we needn't worry about the third rule too much, as we know that a leap year didn't happen in 1900 but did in 2000, and that all other years divisible by 4 are a leap year.
