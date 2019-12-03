@@ -1,13 +1,3 @@
-def factorial(n):
-    if (n < 1 or (not isinstance(n,int))):
-        return undefined
-    if (n == 1 or n == 2):
-        return n
-    result = [1,2]
-    for i in range(2,n,1):
-        result.append((i+1) * result[i-1])
-    return result[n-1]
-
 def is_palindrome(s):
     if(str(s) == str(s)[::-1]):
         return True
