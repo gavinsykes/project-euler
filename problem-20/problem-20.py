@@ -3,7 +3,8 @@ sys.path.insert(1,'../')
 
 import argparse
 import time
-from python_functions import factorial
+
+import math
 
 parser = argparse.ArgumentParser(description = 'Find the sum of the digits in x!')
 parser.add_argument('--num', default = 100, type = int, help = 'Insert x here, it must be a positive integer. It defaults to 100 to correspond with the Project Euler Problem at https://projecteuler.net/problem=20')
@@ -20,7 +21,7 @@ if (not isinstance(x,int)):
 
 def euler_20(n):
     result = 0
-    for i in str(factorial(n)):
+    for i in str(math.factorial(n)):
         result += int(i)
     return result
 
