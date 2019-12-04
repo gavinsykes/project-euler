@@ -4,7 +4,9 @@ int nCr(int n,int r);
 int factorial(int n);
 
 int main() {
-  printf("Here is your answer\n");
+  int n;
+  scanf("%d",n);
+  printf("Here is your answer: %d\n",nCr(2n,n));
   return 0;
 }
 
