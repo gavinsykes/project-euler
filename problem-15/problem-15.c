@@ -5,8 +5,8 @@ int factorial(int n);
 
 int main() {
   int n;
-  scanf("%d",n);
-  printf("Here is your answer: %d\n",nCr(2n,n));
+  scanf("Please enter a number here: %d",&n);
+  printf("Here is your answer: %d\n",nCr(2*n,n));
   return 0;
 }
 
