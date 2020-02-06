@@ -1,13 +1,16 @@
 import argparse
-import time
+import sys
+
+sys.path.append('/home/gavin/Documents/Git Repositories/project-euler')
+import pyfuncs
+
+challenge = 'Find the largest prime factor of {}:'
 
 import math
 
 parser = argparse.ArgumentParser(description = 'Find the largest prime factor of a number.')
 parser.add_argument('--num', default = 600851475143, type = int, help = 'Insert the number here, it must be a positive integer. It defaults to 600851475143 to correspond with the Project Euler Problem at https://projecteuler.net/problem=3')
 x = parser.parse_args().num
-
-timing = {}
 
 if ( (x < 1) and (not isinstance(x, int)) ):
     raise Exception('You entered {}, which is neither an integer nor larger than 1!'.format(x))
@@ -34,11 +37,4 @@ def gen_max_prime(n):
 
     return int(result)
 
-timing['start'] = time.time()
-result = gen_max_prime(x)
-timing['finish'] = time.time()
-print('Find the largest prime factor of x.'.format(x))
-print('Start time: {}'.format(timing['start']))
-print('Result: {}'.format(result)) # Returns 6857 when x = 600851475143
-print('End time: {}'.format(timing['finish']))
-print('This returns {} in {} seconds!'.format(result,timing['finish']-timing['start']))
+pyfuncs.fullprint(challenge,gen_max_prime,x)

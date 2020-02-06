@@ -1,11 +1,14 @@
 import argparse
-import time
+import sys
+
+sys.path.append('/home/gavin/Documents/Git Repositories/project-euler')
+import pyfuncs
+
+challenge = 'Find the sum of all the multiples of 3 or 5 below {}:'
 
 parser = argparse.ArgumentParser(description = 'Find the sum of all the multiples of 3 or 5 below a given number.')
 parser.add_argument('--num', default = 1000, type = int, help = 'Insert the number here, it must be a positive integer. It defaults to 1000 to correspond with the Project Euler Problem at https://projecteuler.net/problem=1')
 x = parser.parse_args().num
-
-timing = {}
 
 if ( (x < 1) and (not isinstance(x, int)) ):
   raise Exception('You entered {}, which is neither an integer nor larger than 1!'.format(x))
@@ -28,11 +31,4 @@ def euler_1(n):
 
     return result
 
-timing['start'] = time.time()
-result = euler_1(x)
-timing['finish'] = time.time()
-print('Find the sum of all the multiples of 3 or 5 below {}:'.format(x))
-print('Start time: {}'.format(timing['start']))
-print('Result: {}'.format(result)) # Returns 232169 when x = 1000
-print('End time: {}'.format(timing['finish']))
-print('This returns {} in {} seconds!'.format(result,timing['finish']-timing['start']))
+pyfuncs.fullprint(challenge,euler_1,x)

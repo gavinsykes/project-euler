@@ -1,16 +1,15 @@
-import sys
-sys.path.insert(1,'../')
-
 import argparse
-import time
-from python_functions import is_prime
+import sys
+
+sys.path.append('/home/gavin/Documents/Git Repositories/project-euler')
+import pyfuncs
+
+challenge = 'Find the sum of all the primes below {}:'
 
 import math
 
 parser = argparse.ArgumentParser(description = 'Find the sum of all the primes below x')
 x = parser.parse_args().num
-
-timing = {}
 
 if ( (x < 1) and (not isinstance(x, int)) ):
     raise Exception('You entered {}, which is neither an integer nor larger than 1!'.format(x))
@@ -46,12 +45,6 @@ def euler_10(n):
             result += i
     return result
 
-timing['start'] = time.time()
-result = euler_10(x)
-timing['finish'] = time.time()
-print(timing['start'])
-print(result)
-print(timing['finish'])
-print('This returns {} in {} seconds!'.format(result,timing['finish']-timing['start']))
+pyfuncs.fullprint(challenge,euler_10,x)
 
 # Need to find a faster way to do this, I started it running at the 65-minute mark of Chelsea vs Burnley and checked back just after they'd had the post-match interview with Sean Dyche, and it still hadn't calculated!

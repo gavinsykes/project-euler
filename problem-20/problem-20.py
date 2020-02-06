@@ -1,13 +1,16 @@
 import argparse
-import time
+import sys
+
+sys.path.append('/home/gavin/Documents/Git Repositories/project-euler')
+import pyfuncs
+
+challenge = 'Find the sum of the digits in {}!:'
 
 import math
 
 parser = argparse.ArgumentParser(description = 'Find the sum of the digits in x!')
 parser.add_argument('--num', default = 100, type = int, help = 'Insert x here, it must be a positive integer. It defaults to 100 to correspond with the Project Euler Problem at https://projecteuler.net/problem=20')
 x = parser.parse_args().num
-
-timing = {}
 
 if ( (x < 1) and (not isinstance(x, int)) ):
     raise Exception('You entered {}, which is neither an integer nor larger than 1!'.format(x))
@@ -22,10 +25,4 @@ def euler_20(n):
         result += int(i)
     return result
 
-timing['start'] = time.time()
-result = euler_20(x)
-timing['finish'] = time.time()
-print(timing['start'])
-print(result) # Returns 648 when x = 100
-print(timing['finish'])
-print('This returns {} in {} seconds!'.format(result,timing['finish']-timing['start']))
+pyfuncs.fullprint(challenge,euler_20,x)

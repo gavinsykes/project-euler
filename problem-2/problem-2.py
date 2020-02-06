@@ -1,11 +1,14 @@
 import argparse
-import time
+import sys
+
+sys.path.append('/home/gavin/Documents/Git Repositories/project-euler')
+import pyfuncs
+
+challenge = 'Find the sum of the even-valued Fibonacci terms up to {}:'
 
 parser = argparse.ArgumentParser(description = 'Find the sum of the even-valued Fibonacci terms up to a given number.')
 parser.add_argument('--num', default = 4000000, type = int, help = 'Insert the number here, it must be a positive integer. It defaults to 4000000 to correspond with the Project Euler Problem at https://projecteuler.net/problem=2')
 x = parser.parse_args().num
-
-timing = {}
 
 if ( (x < 1) and (not isinstance(x, int)) ):
   raise Exception('You entered {}, which is neither an integer nor larger than 1!'.format(x))
@@ -39,11 +42,4 @@ def fibonacci(n):
 
   return fibarray[n-1]
 
-timing['start'] = time.time()
-result = euler_2(x)
-timing['finish'] = time.time()
-print('Find the sum of the even-valued Fibonacci terms up to {}.'.format(x))
-print('Start time: {}'.format(timing['start']))
-print('Result: {}'.format(result)) # Returns 4613732 when x = 4000000
-print('End time: {}'.format(timing['finish']))
-print('This returns {} in {} seconds!'.format(result,timing['finish']-timing['start']))
+pyfuncs.fullprint(challenge,euler_2,x)
