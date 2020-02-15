@@ -1,6 +1,6 @@
 <?php
 function gen_max_prime($n) {
-    if (($n < 1) or !is_int($n)) {
+    if (($n < 1) || !is_int($n)) {
         return undefined;
     }
 
