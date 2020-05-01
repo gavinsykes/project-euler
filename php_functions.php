@@ -16,7 +16,7 @@ function is_palindrome(string $s) {
 
 function is_prime(int $n) {
     if ($n < 1 || !is_int($n)):
-        return undefined;
+        return false;
 
     if(!($n & 1)):
         return false;
@@ -24,7 +24,7 @@ function is_prime(int $n) {
     if($n % 3 == 0):
         return false;
 
-    if(substr(strval($n),-1) == '5') || (substr(strval($n),-1) == '0')):
+    if((substr(strval($n),-1) == '5') || (substr(strval($n),-1) == '0')):
         return false;
 
     for ($i = 1; $i < $n/6; $i++) {
