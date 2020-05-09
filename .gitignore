@@ -1,7 +1,5 @@
 __pycache__
-problem-15/Problem15_C
-problem-15/a.out
-problem-15/opt
-problem-1/problem-1
-updategists.py
 updategists_config.py
+
+*.class
+COMPILED*
