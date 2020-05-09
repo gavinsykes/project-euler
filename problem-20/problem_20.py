@@ -20,9 +20,9 @@ if (not isinstance(x,int)):
     raise Exception('You entered {}, which is not an integer, please try a positive integer.'.format(x))
 
 def euler_20(n):
-    result = 0
-    for i in str(math.factorial(n)):
-        result += int(i)
-    return result
+  result = 0
+  for i in str(math.factorial(n)):
+    result += int(i)
+  return result
 
 pyfuncs.fullprint(challenge,euler_20,x)
