@@ -1,4 +1,12 @@
 <?php
+function is_even(int $n) {
+    return !($n & 1);
+}
+
+function is_odd(int $n) {
+    return $n & 1;
+}
+
 function is_pythagorean_triple(int $a,int $b,int $c) {
     if ($a**2+$b**2==$c**2 || $a**2+$c**2==$b**2 || $b**2+$c**2==$a**2) {
         return true;

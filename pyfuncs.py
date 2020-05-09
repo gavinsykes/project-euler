@@ -2,13 +2,22 @@ def fullprint(challenge,fun,arg):
   import time
   timing = {}
   timing['start'] = time.time()
-  result = fun(arg)
+  if (arg):
+    result = fun(arg)
+  else:
+    result = fun()
   timing['finish'] = time.time()
   print(challenge.format(arg))
   print(f'Start time: {timing["start"]}')
   print(f'Result: {result}')
   print(f'End time: {timing["finish"]}')
   print(f'This returns {result} in {timing["finish"]-timing["start"]} seconds!')
+
+def is_even(n):
+  return not(n & 1)
+
+def is_odd(n):
+  return n & 1
 
 def is_palindrome(s):
   if(str(s) == str(s)[::-1]):
@@ -19,7 +28,7 @@ def is_prime(n):
   if (n < 1 or (not isinstance(n,int))):
     return undefined
 
-  if(not(n & 1)):
+  if(is_even(n)):
     return False
 
   if(n % 3 == 0):
@@ -39,3 +48,8 @@ def prod(li):
   for i in li:
     result *= int(i)
   return result
+
+def is_pythagorean_triple(a,b,c):
+  if (a**2+b**2==c**2 or a**2+c**2==b**2 or b**2+c**2==a**2):
+    return True
+  return False

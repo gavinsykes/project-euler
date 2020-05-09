@@ -71,8 +71,10 @@ def fileexists(problem,language):
     else:
       fi = open('problem-'+str(problem)+ext,'r')
     if fi.mode == 'r':
+      fi.close()
       return True
     else:
+      fi.close()
       return False
   except:
     return False
@@ -86,9 +88,8 @@ def getfilecontents(problem,language):
     fi = open('problem-'+str(problem)+ext,'r')
   if fi.mode == 'r':
     contents = fi.read()
+    fi.close()
     return contents
-
-#getfilecontents(4,'PHP')
 
 def getfiles():
   directorylist = list(filter(lambda dir: re.match(r'problem-',dir),os.listdir()))
@@ -100,10 +101,10 @@ def getfiles():
         fi = open(f,'r')
         if fi.mode == 'r':
           contents = fi.read()
+          fi.close()
           print(contents)
 
 # Create new gists
-
 
 def postgist(url,headers,params,data):
   r = requests.post(url,headers=headers,params=params,data=data)
@@ -118,7 +119,7 @@ def creategist(problem,language):
     postgist(url,headers,params,json.dumps(body))
 
 def postallgists():
-  for i in range(1,4):
+  for i in range(1,25):
     for l, n in languages.items():
       print('Problem ' + str(i) + ' in ' + n)
       if fileexists(i,n):
@@ -132,7 +133,6 @@ def postallgists():
         print('\x1b[1;31;40mGist doesn\'t exist\x1b[0m')
 
 postallgists()
-
 # Update existing gists
 
 def gist_id(problem,language):

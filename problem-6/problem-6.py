@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-sys.path.append('/home/gavin/Documents/Git Repositories/project-euler')
+sys.path.append('/home/gavin/project-euler')
 import pyfuncs
 
 challenge = 'Find the difference between the sum of the squares of the first {} natural numbers and the square of the sum:'
@@ -11,26 +11,26 @@ parser.add_argument('--num', default = 10, type = int, help = 'Insert the number
 x = parser.parse_args().num
 
 if ( (x < 1) and (not isinstance(x, int)) ):
-    raise Exception('You entered {}, which is neither an integer nor larger than 1!'.format(x))
+  raise Exception(f'You entered {x}, which is neither an integer nor larger than 1!')
 if (x < 1):
-    raise Exception('You entered {}, which is less than 1, please try a positive integer.'.format(x))
+  raise Exception(f'You entered {x}, which is less than 1, please try a positive integer.')
 if (not isinstance(x,int)):
-    raise Exception('You entered {}, which is not an integer, please try a positive integer.'.format(x))
+  raise Exception(f'You entered {x}, which is not an integer, please try a positive integer.')
 
 def euler_6(n):
-    if ( (n < 1) or (not isinstance(n, int)) ):
-        return undefined
+  if ( (n < 1) or (not isinstance(n, int)) ):
+    return undefined
 
-    result = 0
-    sumsquares = 0
-    _sum = 0
-    squaresum = 0
-    for i in range(n):
-        sumsquares += i ** 2
-    for i in range(n):
-        _sum += i
-    squaresum = _sum ** 2
-    result = squaresum - sumsquares
-    return result
+  result = 0
+  sumsquares = 0
+  _sum = 0
+  squaresum = 0
+  for i in range(n):
+    sumsquares += i ** 2
+  for i in range(n):
+    _sum += i
+  squaresum = _sum ** 2
+  result = squaresum - sumsquares
+  return result
 
 pyfuncs.fullprint(challenge,euler_6,x)

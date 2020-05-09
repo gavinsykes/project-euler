@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-sys.path.append('/home/gavin/Documents/Git Repositories/project-euler')
+sys.path.append('/home/gavin/project-euler')
 import pyfuncs
 
 challenge = 'Find the sum of the even-valued Fibonacci terms up to {}:'
@@ -11,11 +11,11 @@ parser.add_argument('--num', default = 4000000, type = int, help = 'Insert the n
 x = parser.parse_args().num
 
 if ( (x < 1) and (not isinstance(x, int)) ):
-  raise Exception('You entered {}, which is neither an integer nor larger than 1!'.format(x))
+  raise Exception(f'You entered {x}, which is neither an integer nor larger than 1!')
 if (x < 1):
-  raise Exception('You entered {}, which is less than 1, please try a positive integer.'.format(x))
+  raise Exception(f'You entered {x}, which is less than 1, please try a positive integer.')
 if (not isinstance(x,int)):
-  raise Exception('You entered {}, which is not an integer, please try a positive integer.'.format(x))
+  raise Exception(f'You entered {x}, which is not an integer, please try a positive integer.')
 
 def euler_2(n):
   result = 0

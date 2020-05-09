@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-sys.path.append('/home/gavin/Documents/Git Repositories/project-euler')
+sys.path.append('/home/gavin/project-euler')
 import pyfuncs
 
 challenge = 'What is the {}th prime number?'
@@ -13,19 +13,19 @@ parser.add_argument('--num', default = 10001, type = int, help = 'Insert x here,
 x = parser.parse_args().num
 
 if ( (x < 1) and (not isinstance(x, int)) ):
-    raise Exception('You entered {}, which is neither an integer nor larger than 1!'.format(x))
+  raise Exception(f'You entered {x}, which is neither an integer nor larger than 1!')
 if (x < 1):
-    raise Exception('You entered {}, which is less than 1, please try a positive integer.'.format(x))
+  raise Exception(f'You entered {x}, which is less than 1, please try a positive integer.')
 if (not isinstance(x,int)):
-    raise Exception('You entered {}, which is not an integer, please try a positive integer.'.format(x))
+  raise Exception(f'You entered {x}, which is not an integer, please try a positive integer.')
 
 def nth_prime(n):
-    r = 0
-    count = 1
-    while(count<=n):
-        if(pyfuncs.is_prime(2 * r + 1)):
-            count+=1
-        r+=1
-    return int(2 * r + 1)
+  r = 0
+  count = 1
+  while(count<=n):
+    if(pyfuncs.is_prime(2 * r + 1)):
+      count+=1
+    r+=1
+  return int(2 * r + 1)
 
 pyfuncs.fullprint(challenge,nth_prime,x)

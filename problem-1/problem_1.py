@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-sys.path.append('/home/gavin/Documents/Git Repositories/project-euler')
+sys.path.append('/home/gavin/project-euler')
 import pyfuncs
 
 challenge = 'Find the sum of all the multiples of 3 or 5 below {}:'
@@ -11,24 +11,24 @@ parser.add_argument('--num', default = 1000, type = int, help = 'Insert the numb
 x = parser.parse_args().num
 
 if ( (x < 1) and (not isinstance(x, int)) ):
-  raise Exception('You entered {}, which is neither an integer nor larger than 1!'.format(x))
+  raise Exception(f'You entered {x}, which is neither an integer nor larger than 1!')
 if (x < 1):
-  raise Exception('You entered {}, which is less than 1, please try a positive integer.'.format(x))
+  raise Exception(f'You entered {x}, which is less than 1, please try a positive integer.')
 if (not isinstance(x,int)):
-  raise Exception('You entered {}, which is not an integer, please try a positive integer.'.format(x))
+  raise Exception(f'You entered {x}, which is not an integer, please try a positive integer.')
 
 def euler_1(n):
-    result = 0
-    x = n/3
-    y = n/5
+  result = 0
+  x = n/3
+  y = n/5
 
-    for i in range (1,int(x)):
-        result += 3*i
+  for i in range (1,int(x)):
+    result += 3*i
 
-    for i in range (1,int(y)):
-        if (5*i % 3 != 0):
-            result += 5*i
+  for i in range (1,int(y)):
+    if (5*i % 3 != 0):
+      result += 5*i
 
-    return result
+  return result
 
 pyfuncs.fullprint(challenge,euler_1,x)

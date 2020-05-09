@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-sys.path.append('/home/gavin/Documents/Git Repositories/project-euler')
+sys.path.append('/home/gavin/project-euler')
 import pyfuncs
 
 challenge = 'Find the largest palindrome made from the product of 2 numbers of {} digits:'
@@ -11,11 +11,11 @@ parser.add_argument('--num', default = 3, type = int, help = 'Insert the number 
 x = parser.parse_args().num
 
 if ( (x < 1) and (not isinstance(x, int)) ):
-    raise Exception('You entered {}, which is neither an integer nor larger than 1!'.format(x))
+  raise Exception(f'You entered {x}, which is neither an integer nor larger than 1!')
 if (x < 1):
-    raise Exception('You entered {}, which is less than 1, please try a positive integer.'.format(x))
+  raise Exception(f'You entered {x}, which is less than 1, please try a positive integer.')
 if (not isinstance(x,int)):
-    raise Exception('You entered {}, which is not an integer, please try a positive integer.'.format(x))
+  raise Exception(f'You entered {x}, which is not an integer, please try a positive integer.')
 
 def largest_palindrome_product(n):
     if ( (n < 1) or (not isinstance(n, int)) ):
