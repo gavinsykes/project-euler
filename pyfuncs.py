@@ -1,5 +1,6 @@
 def fullprint(challenge,fun,arg):
   import time
+  import csv
   timing = {}
   timing['start'] = time.time()
   if (arg):
@@ -12,6 +13,9 @@ def fullprint(challenge,fun,arg):
   print(f'Result: {result}')
   print(f'End time: {timing["finish"]}')
   print(f'This returns {result} in {timing["finish"]-timing["start"]} seconds!')
+  with open('problem_1_timings.csv', 'a', newline='') as tcsv:
+    twriter = csv.writer(tcsv, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
+    twriter.writerow(['Python',arg,timing['finish'] - timing['start']])
 
 def is_even(n):
   return not(n & 1)
