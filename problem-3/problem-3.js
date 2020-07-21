@@ -1,12 +1,12 @@
 const genMaxPrime = n => {
     let result;
-    if (n < 1 || Number.isInteger(n)) {
+    if (n < 1 || !Number.isInteger(n)) {
         return undefined;
     }
 
     while (!(n&1)) {
         result = 2;
-        n >> 1;
+        n = n >> 1;
     }
 
     for (let i = 3; i < Math.sqrt(n);i += 2) {
@@ -22,3 +22,8 @@ const genMaxPrime = n => {
 
     return result;
 };
+
+genMaxPrime(2) =>
+while(!(2&1)) = while(true)
+result = 2
+2 >> 1

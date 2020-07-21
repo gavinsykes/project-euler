@@ -13,13 +13,17 @@ languages = {
   '.js':'JavaScript',
   '.php':'PHP',
   '.py':'Python',
-  '.rs':'Rust'
+  '.rs':'Rust',
+  '.ts':'TypeScript'
 }
 
-gists = requests.get(
-  config.GITHUB_API + 'users/gavinsykes/gists',
-  headers=config.HEADERS
-).json()
+def get_all_gists_for_user(user):
+  return requests.get(
+    config.GITHUB_API + 'users/%s/gists'%user,
+    headers = config.HEADERS
+  ).json()
+
+gists = get_all_gists_for_user('gavinsykes')
 
 workingdirectory = os.getcwd()
 
@@ -46,6 +50,8 @@ def get_gists():
         print(problems[str(prob_num)])
         problems[str(prob_num)][language] = 'Yes'
   return problems
+
+get_gists()
 
 for problem in get_gists().items():
   print(problem)
@@ -132,7 +138,7 @@ def postallgists():
       else:
         print('\x1b[1;31;40mGist doesn\'t exist\x1b[0m')
 
-postallgists()
+# postallgists()
 # Update existing gists
 
 def gist_id(problem,language):
