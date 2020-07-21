@@ -3,3 +3,4 @@ updategists_config.py
 
 *.class
 COMPILED*
+*.csv
