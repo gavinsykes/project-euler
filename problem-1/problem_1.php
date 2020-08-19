@@ -24,6 +24,11 @@ function euler_1($n) {
 }
 
 $v = $_REQUEST['val'];
+$c = $_SERVER['argv'][1];
 
-echo euler_1($v);
+if ($v) {
+  echo euler_1($v);
+} else if ($c) {
+  echo euler_1($c);
+}
 ?>
