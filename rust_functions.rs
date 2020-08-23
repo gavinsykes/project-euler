@@ -6,7 +6,7 @@ fn is_odd(n: i64) -> bool {
   n&1==1
 }
 
-fn is_pythagorean_triple(a: i64,b: i64,c: i64) -> bool {
+fn is_pythagorean_triple(a: u64,b: u64,c: u64) -> bool {
   if (a.pow(2) + b.pow(2) == c.pow(2) || a.pow(2) + c.pow(2) == b.pow(2) || b.pow(2) + c.pow(2) == a.pow(2)) {
     true;
   }
@@ -22,7 +22,7 @@ fn is_palindrome(string: &str) -> bool {
   }
 }
 
-fn is_prime(n: i64) -> bool {
+fn is_prime(n: u64) -> bool {
   if n < 1 || is_even(n) {
     return false;
   }
