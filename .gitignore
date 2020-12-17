@@ -1,5 +1,6 @@
 __pycache__
 updategists_config.py
+publish_to_wordpress_config.py
 
 *.class
 COMPILED*

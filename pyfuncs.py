@@ -32,13 +32,7 @@ def is_prime(n):
   if (n < 1 or (not isinstance(n,int))):
     return undefined
 
-  if(is_even(n)):
-    return False
-
-  if(n % 3 == 0):
-    return False
-
-  if((str(n)[-1:] == '5') or (str(n)[-1:] == '0')):
+  if((is_even(n)) or (n % 3 == 0) or (str(n)[-1:] == '5') or (str(n)[-1:] == '0')):
     return False
 
   for i in range(1,int(math.floor(n/6)),1):
