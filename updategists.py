@@ -25,7 +25,7 @@ def get_all_gists_for_user(user):
     headers = config.HEADERS
   ).json()
 
-gists = get_all_gists_for_user('gavinsykes')
+gists = get_all_gists_for_user(config.USERNAME)
 
 # And we need to know what directory we're currently working in
 workingdirectory = os.getcwd()
@@ -43,10 +43,11 @@ def pick_action(actions):
     pass
   return None
 
-possible_actions = ['Update gists','Check gists','Post new gists']
+# possible_actions = ['Update gists','Check gists','Post new gists']
 
-chosen_action = pick_action(possible_actions)
-print(chosen_action)
+# chosen_action = pick_action(possible_actions)
+# print(chosen_action)
+
 # Pull current gists
 def get_gists():
   defaultdict = {'C':'No','C++':'No','Java':'No','JavaScript':'No','PHP':'No','Python':'No','Rust':'No'}
@@ -64,6 +65,16 @@ def get_gists():
           problems[str(prob_num)] = copy.copy(defaultdict)
         problems[str(prob_num)][language] = 'Yes'
   return problems
+
+# Given a problem, determine whether any Gists exist
+def gists_exist_for_problem(problem_number):
+  for gist in gists:
+    files = gist['files']
+    for f, d in files.items():
+      if (re.findall(r'\d+',d['filename'])):
+        if (re.findall(r'\d+',d['filename'])[0] == str(problem_number)):
+          return True
+  return False
 
 # Given a problem and language, determine whether the gist exists
 def gistexists(problem,language):
@@ -184,9 +195,9 @@ def updategist(problem,language):
 def updategists():
   return False
 
-if chosen_action == 1:
-  print('Updating existing gists')
-  postallgists()
-elif chosen_action == 2:
-  print('What gists do I currently have published?')
-  print(get_gists())
+# if chosen_action == 1:
+#   print('Updating existing gists')
+#   postallgists()
+# elif chosen_action == 2:
+#  print('What gists do I currently have published?')
+#  print(get_gists())

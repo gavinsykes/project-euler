@@ -18,32 +18,6 @@ language_extensions = {'.c':'C',
                        '.ts':'TypeScript'
                       }
 
-def get_all_euler_blog_posts():
-  return requests.get(url=config.URL + '?search=Project Euler Problems',headers=config.HEADERS).json()
-
-def get_specific_euler_blog_post(problem_number):
-  import html
-  result = list(filter(lambda p: html.unescape(p['title']['rendered']) == 'Solving the Project Euler Problems – Problem ' + str(problem_number), get_all_euler_blog_posts()))
-  if len(result) == 0:
-    return None
-  return result[0]
-
-def update_blog_post(problem_number,blog_post_id):
-  p = requests.get(url=config.URL + '/' + str(blog_post_id),headers=config.HEADERS).json()
-  post = {'content':get_file_contents(problem_number),
-          'categories':p['categories'],
-          'tags':p['tags']
-         }
-  change_categories = str(input('Current categories are ' + str(post['categories']) + ', would you like to add or remove any? Yes/no '))
-  change_tags = str(input('Current tags are ' + str(post['tags']) + ', would you like to add or remove any? Yes/no '))
-  #u = requests.post(url=config.URL + '/' + str(blog_post_id),headers=config.HEADERS,json=post)
-  #print(u)
-  #print('Tutto bene! Your updated post is at ' + json.loads(u.content)['link'])
-
-def delete_blog_post(blog_post_id):
-  d = requests.post(url=config.URL + '/' + str(blog_post_id),headers=config.HEADERS,json=post)
-  print(d)
-
 def markdown_file_exists(problem_number):
   return os.path.isfile(workingdirectory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '.md')
 
