@@ -3,7 +3,7 @@ def fullprint(challenge,fun,arg):
   import csv
   timing = {}
   timing['start'] = time.time()
-  if (arg):
+  if arg:
     result = fun(arg)
   else:
     result = fun()
