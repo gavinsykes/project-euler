@@ -30,7 +30,7 @@ def is_palindrome(s):
 def is_prime(n):
   import math
   if (n < 1 or (not isinstance(n,int))):
-    return undefined
+    return None
 
   if((is_even(n)) or (n % 3 == 0) or (str(n)[-1:] == '5') or (str(n)[-1:] == '0')):
     return False
