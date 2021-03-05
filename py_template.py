@@ -1,7 +1,11 @@
 import argparse
 import sys
+import platform
 
-sys.path.append('/home/gavin/project-euler')
+if platform.system() == 'Linux':
+  sys.path.append('/home/gavin/project-euler')
+elif platform.system() == 'Windows':
+  sys.path.append('C:\\Users\\gavin\\Projects\\project-euler')
 import pyfuncs
 
 challenge = ''
