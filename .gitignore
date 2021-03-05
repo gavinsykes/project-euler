@@ -5,3 +5,4 @@ publish_to_wordpress_config.py
 *.class
 COMPILED*
 *.csv
+.vscode/settings.json
