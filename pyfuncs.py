@@ -1,6 +1,10 @@
 def fullprint(challenge,fun,arg):
   import time
   import csv
+  import platform
+  import psutil
+  import os
+  import sys
   timing = {}
   timing['start'] = time.time()
   if arg:
@@ -13,9 +17,13 @@ def fullprint(challenge,fun,arg):
   print(f'Result: {result}')
   print(f'End time: {timing["finish"]}')
   print(f'This returns {result} in {timing["finish"]-timing["start"]} seconds!')
-  with open('problem_1_timings.csv', 'a', newline='') as tcsv:
+  py_v = sys.version_info
+  uname = platform.uname()
+  cpu = psutil.cpu_freq()
+  mem = psutil.virtual_memory()
+  with open(f'problem_{os.getcwd().split("_")[1]}_timings.csv', 'a', newline='') as tcsv:
     twriter = csv.writer(tcsv, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
-    twriter.writerow(['Python',arg,timing['finish'] - timing['start']])
+    twriter.writerow(['Python',f'{py_v.major}.{py_v.minor}.{py_v.micro}',arg,timing['finish'] - timing['start'],uname.system,uname.release,uname.version,uname.machine,uname.processor,cpu.current,mem.total,timing['start']])
 
 def is_even(n):
   return not(n & 1)

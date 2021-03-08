@@ -1,7 +1,8 @@
 import argparse
 import sys
+import os
 
-sys.path.append('/home/gavin/project-euler')
+sys.path.append(os.path.dirname(os.getcwd()))
 import pyfuncs
 
 challenge = 'Find the sum of the even-valued Fibonacci terms up to {}:'
