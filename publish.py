@@ -13,6 +13,7 @@ langs = ['English','Español','Català','Italiano']
 languages = {
   '.c':'C',
   '.cpp':'C++',
+  '.cs':'C#',
   '.java':'Java',
   '.js':'JavaScript',
   '.php':'PHP',
@@ -99,7 +100,7 @@ while True:
         else:
           # MARKDOWN FILE YES, CODE FILES YES, GISTS YES, BLOG POST NO
           print('\x1b[1;31;40m' + 'No blog post for problem ' + str(problem_number) + '.' + '\x1b[0m')
-          create_post = str(input('Would you like me to make one?'))
+          create_post = str(input('Would you like me to make one? '))
           if(create_post == 'Yes'):
             # CREATE BLOG POST
             publish(build_post(problem_number))
@@ -126,7 +127,7 @@ while True:
         else:
           # MARKDOWN FILE YES, CODE FILES YES, GISTS NO, BLOG POST NO
           print('\x1b[1;31;40m' + 'No blog post for problem ' + str(problem_number) + '.' + '\x1b[0m')
-          create_post = str(input('Would you like me to make one?'))
+          create_post = str(input('Would you like me to make one? '))
           if(create_post == 'Yes'):
             # CREATE BLOG POST
             publish(build_post(problem_number))

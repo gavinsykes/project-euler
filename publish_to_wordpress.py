@@ -58,7 +58,7 @@ def get_file_contents(number):
   fi = open('problem_' + str(number) + '.md','r')
   if fi.mode == 'r':
     contents = fi.read()
-    return contents
+    return json.dumps(contents)
 
 def add_tags(problem_number):
   result = list()
@@ -73,24 +73,25 @@ def build_post(problem_number):
   if ( (problem_number < 1) or (not isinstance(problem_number, int)) ):
     raise Exception(f'You entered {problem_number}, which is either not an integer or not greater than or equal to 1!')
   post_date = zeroth_post_date + timedelta(days = problem_number * 7)
-  post = {'title':'Solving the Project Euler Problems - Problem ' + str(problem_number),
-          'date':post_date.strftime('%Y-%m-%dT%H:%M:%SZ'),
-          'status':'publish',
-          'content':get_file_contents(problem_number),
-          'comment_status':'open',
-          'format':'standard',
-          'categories':['Mathematics','Project Euler','Software Development'],
-          'tags':['euler','project euler']
-         }
-  post['categories'].extend(str(input('Would you like to add any additional categories to your post? Perhaps "Mathematics" or "Web Development". ')).split(','))
-  post['tags'].extend(add_tags(problem_number)).extend(str(input('Would you also like to add any additional tags to your post? Perhaps "mathematics", "palindrome" or "Fibonacci". ')).split(','))
+  post = {
+    'title':'Solving the Project Euler Problems - Problem ' + str(problem_number),
+    'date':post_date.strftime('%Y-%m-%dT%H:%M:%SZ'),
+    'status':'publish',
+    'content':get_file_contents(problem_number),
+    'format':'standard'
+  }
+# 'categories':['Mathematics','Project Euler','Software Development'],
+# 'tags':['euler','project euler']
+#         }
+#  post['categories'].extend(str(input('Would you like to add any additional categories to your post? Perhaps "Mathematics" or "Web Development". ')).split(','))
+#  post['tags'].extend(add_tags(problem_number))
+#  post['tags'].extend(str(input('Would you also like to add any additional tags to your post? Perhaps "mathematics", "palindrome" or "Fibonacci". ')).split(','))
+  print('Okay, here is what your post looks like:')
   print(post)
+  return post
 
 def publish(post):
-  p = requests.post(url=config.URL,headers=config.HEADERS,json=post)
+  print(post)
+  p = requests.post(url=config.URL,headers=config.HEADERS,json=json.dumps(post))
   print(p)
   print('Tutto bene! Your new post is at ' + json.loads(p.content)['link'])
-
-#post_to_submit = build_post(int(input('Hi Gavin, which Project Euler Problem do you want to build a blog post for? ')))
-
-#publish(post_to_submit)

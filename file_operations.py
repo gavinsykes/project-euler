@@ -1,6 +1,7 @@
 import os
+import datetime
 
-zeroth_post_date = datetime(2018,12,30,15,0,0)
+zeroth_post_date = datetime.datetime(2018,12,30,15,0,0)
 workingdirectory = os.getcwd()
 
 language_extensions = {'.c':'C',
