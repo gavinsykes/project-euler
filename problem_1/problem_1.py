@@ -2,7 +2,7 @@ import argparse
 import sys
 import os
 
-sys.path.append(os.path.dirname(os.getcwd()))
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import pyfuncs
 
 challenge = 'Find the sum of all the multiples of 3 or 5 below {}:'
