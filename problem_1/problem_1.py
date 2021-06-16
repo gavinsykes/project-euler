@@ -32,4 +32,4 @@ def euler_1(n):
 
   return result
 
-pyfuncs.fullprint(challenge,euler_1,x)
+pyfuncs.fullprint(challenge,euler_1,x,__file__)
