@@ -1,18 +1,20 @@
 import os
 import datetime
+import json
+import itertools
 
 zeroth_post_date = datetime.datetime(2018,12,30,15,0,0)
 workingdirectory = os.getcwd()
 
-language_extensions = {'.c':'C',
-                       '.cpp':'C++',
-                       '.java':'Java',
-                       '.js':'JavaScript',
-                       '.php':'PHP',
-                       '.py':'Python',
-                       '.rs':'Rust',
-                       '.ts':'TypeScript'
-                      }
+with open('languages.json', 'r') as im:
+  langs=im.read()
+
+languages = json.loads(langs)
+
+language_extensions = []
+
+for language in languages:
+  language_extensions.extend(language.get('extensions'))
 
 def file_exists(filepath):
   return os.path.isfile(filepath)
@@ -39,9 +41,9 @@ def get_file_contents(filepath):
     contents = f.read()
     return contents
 
-def get_file_contents(number):
-  os.chdir(workingdirectory + '/problem_' + str(number))
-  fi = open('problem_' + str(number) + '.md','r')
+def get_markdown_file_contents(problem_number):
+  os.chdir(workingdirectory + '/problem_' + str(problem_number))
+  fi = open('problem_' + str(problem_number) + '.md','r')
   if fi.mode == 'r':
     contents = fi.read()
     return contents
