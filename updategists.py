@@ -177,7 +177,7 @@ def gist_id(problem,language):
 def gist_contents(gist_id):
   url = config.GITHUB_API + 'gists/' + str(gist_id)
   gist = requests.get(url,headers=config.HEADERS).json()
-  for f ,d in gist['files'].items():
+  for _ ,d in gist['files'].items():
     return d['content']
 
 # Update a gist from the file in the repo, given the problem and language
