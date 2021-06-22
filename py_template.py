@@ -2,7 +2,7 @@ import argparse
 import sys
 import os
 
-sys.path.append(os.path.dirname(os.getcwd()))
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import pyfuncs
 
 challenge = ''
@@ -22,4 +22,4 @@ if (not isinstance(x,int)):
 ### Code goes here
 ###
 
-pyfuncs.fullprint(challenge,euler_1,x)
+pyfuncs.fullprint(challenge,function_name,x,__file__)
