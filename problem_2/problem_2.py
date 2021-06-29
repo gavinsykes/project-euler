@@ -2,7 +2,7 @@ import argparse
 import sys
 import os
 
-sys.path.append(os.path.dirname(os.getcwd()))
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import pyfuncs
 
 challenge = 'Find the sum of the even-valued Fibonacci terms up to {}:'
@@ -12,11 +12,11 @@ parser.add_argument('--num', default = 4000000, type = int, help = 'Insert the n
 x = parser.parse_args().num
 
 if ( (x < 1) and (not isinstance(x, int)) ):
-  raise Exception(f'You entered {x}, which is neither an integer nor larger than 1!')
+  raise Exception(f'\033[1;31mYou entered {x}, which is neither an integer nor larger than 1!\033[0m')
 if (x < 1):
-  raise Exception(f'You entered {x}, which is less than 1, please try a positive integer.')
+  raise Exception(f'\033[1;31mYou entered {x}, which is less than 1, please try a positive integer.\033[0m')
 if (not isinstance(x,int)):
-  raise Exception(f'You entered {x}, which is not an integer, please try a positive integer.')
+  raise Exception(f'\033[1;31mYou entered {x}, which is not an integer, please try a positive integer.\033[0m')
 
 def euler_2(n):
   result = 0
@@ -32,7 +32,7 @@ def euler_2(n):
 # Function to work out the fibonacci numbers. Done as an array because it is much much faster than using a recursive function.
 def fibonacci(n):
   if (not isinstance(n,int) or n < 1):
-    return undefined # Didn't really need this as I'm controlling the input, but you just never know.
+    return None # Didn't really need this as I'm controlling the input, but you just never know.
 
   if (n == 1 or n == 2):
     return n
