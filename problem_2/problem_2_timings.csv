@@ -1,0 +1,2 @@
+language,language_version,input,time,os,os_release,os_version,machine,processor,cpu_freq,memory,timestamp
+Python,3.9.5,4000000,0.0002906322479248047,Darwin,19.6.0,Darwin Kernel Version 19.6.0: Mon Apr 12 20:57:45 PDT 2021; root:xnu-6153.141.28.1~1/RELEASE_X86_64,x86_64,i386,1800,8589934592,1624979582.8959732
