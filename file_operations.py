@@ -1,7 +1,6 @@
 import os
 import datetime
 import json
-import itertools
 
 zeroth_post_date = datetime.datetime(2018,12,30,15,0,0)
 workingdirectory = os.getcwd()
