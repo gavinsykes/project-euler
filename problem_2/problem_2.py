@@ -43,4 +43,4 @@ def fibonacci(n):
 
   return fibarray[n-1]
 
-pyfuncs.fullprint(challenge,euler_2,x)
+pyfuncs.fullprint(challenge,euler_2,x,__file__)
