@@ -22,7 +22,6 @@ def fullprint(challenge,fun,arg,filepath):
   cpu = psutil.cpu_freq()
   mem = psutil.virtual_memory()
   with open(f'{filepath.split(".")[0]}_timings.csv', 'a', newline='') as tcsv:
-    print(tcsv)
     twriter = csv.writer(tcsv, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
     twriter.writerow(['Python',f'{py_v.major}.{py_v.minor}.{py_v.micro}',arg,timing['finish'] - timing['start'],uname.system,uname.release,uname.version,uname.machine,uname.processor,cpu.current,mem.total,timing['start']])
     tcsv.close()
