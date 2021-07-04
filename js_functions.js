@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 export const is_even = n => !n&1;
 export const is_odd = n => n&1;
 
@@ -9,43 +11,37 @@ export const is_pythagorean_triple = (a,b,c) => (a**2+b**2==c**2 || a**2+c**2==b
 
 export const fullprint = (challenge,fun,argument,filepath) => {
   const timing = {};
+  timing.start = Date.now();
   result = argument ? fun(argument) : fun();
-  console.log(challenge);
+  timing.finish = Date.now();
+  console.log(`Start time: ${timing.start}`);
+  console.log(`Result: ${result}`);
+  console.log(`Finish time: ${timing.finish}`);
+  console.log(`This returns ${result} in ${timing.finish - timing.start} seconds!`);
+  node_v = process.versions.v8.split('.');
+  fs.writeFile(
+    'problem_1/problem_1_timings.csv',
+    [
+      'JavaScript',
+      `${node_v[0]}.${node_v[1]}.${node_v[2]}`,
+      arg,
+      timing['finish'] - timing['start'],
+      "Windows",
+      10,
+      "10.0.19042",
+      "AMD64",
+      "Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",
+      991.0,
+      8356937728,
+      timing.start
+    ].join(','),
+    {
+      encoding:'utf8',
+      flag:'a'
+    },error => console.log(error));
 }
 
 /* The below is to be converted from Python
-
-def fullprint(challenge,fun,arg,filepath):
-  import time
-  import csv
-  import platform
-  import psutil
-  import os
-  import sys
-  timing = {}
-  timing['start'] = time.time()
-  if arg:
-    result = fun(arg)
-  else:
-    result = fun()
-  timing['finish'] = time.time()
-  print(challenge.format(arg))
-  print(f'Start time: {timing["start"]}')
-  print(f'Result: {result}')
-  print(f'End time: {timing["finish"]}')
-  print(f'This returns {result} in {timing["finish"]-timing["start"]} seconds!')
-  py_v = sys.version_info
-  uname = platform.uname()
-  cpu = psutil.cpu_freq()
-  mem = psutil.virtual_memory()
-  with open(f'{filepath.split(".")[0]}_timings.csv', 'a', newline='') as tcsv:
-    twriter = csv.writer(tcsv, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
-    twriter.writerow(['Python',f'{py_v.major}.{py_v.minor}.{py_v.micro}',arg,timing['finish'] - timing['start'],uname.system,uname.release,uname.version,uname.machine,uname.processor,cpu.current,mem.total,timing['start']])
-    tcsv.close()
-
-def is_palindrome(s):
-  if(str(s) == str(s)[::-1]):
-    return True
 
 def is_prime(n):
   import math
