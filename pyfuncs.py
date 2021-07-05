@@ -3,7 +3,6 @@ def fullprint(challenge,fun,arg,filepath):
   import csv
   import platform
   import psutil
-  import os
   import sys
   timing = {}
   timing['start'] = time.time()
