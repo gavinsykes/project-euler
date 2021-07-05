@@ -50,9 +50,9 @@ def is_prime(n):
 
   return True
 
-def prod(li):
+def product_of_list(list):
   result = 1
-  for i in li:
+  for i in list:
     result *= int(i)
   return result
 
