@@ -44,7 +44,7 @@ function is_prime(int $n) {
     return true;
 }
 
-function product(array $a) {
+function product_of_array(array $a) {
     $result = 1;
     foreach($a as $v) {
         $result *= $v;
