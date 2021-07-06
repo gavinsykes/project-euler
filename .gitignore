@@ -1,6 +1,7 @@
 __pycache__
 updategists_config.py
 publish_to_wordpress_config.py
+env_info.json
 
 *.class
 COMPILED*
