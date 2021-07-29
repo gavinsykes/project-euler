@@ -26,7 +26,7 @@ function is_prime(int $n) {
     if ($n < 1 || !is_int($n)):
         return false;
 
-    if(!($n & 1)):
+    if(is_even(n)):
         return false;
 
     if($n % 3 == 0):
