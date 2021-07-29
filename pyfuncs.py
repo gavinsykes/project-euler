@@ -64,6 +64,9 @@ def product_of_list(list: list[int]) -> int:
   return result
 
 def is_pythagorean_triple(a: int,b: int,c: int) -> bool:
-  if (a**2+b**2==c**2 or a**2+c**2==b**2 or b**2+c**2==a**2):
+  a_squared = a**2
+  b_squared = b**2
+  c_squared = c**2
+  if (a_squared + b_squared == c_squared or a_squared + c_squared == b_squared or b_squared + c_squared == a_squared):
     return True
   return False
