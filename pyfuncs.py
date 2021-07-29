@@ -1,6 +1,7 @@
 def fullprint(challenge,fun,arg,filepath):
   import time
   import csv
+  import json
   import platform
   import psutil
   import sys
@@ -16,26 +17,33 @@ def fullprint(challenge,fun,arg,filepath):
   print(f'Result: {result}')
   print(f'End time: {timing["finish"]}')
   print(f'This returns {result} in {timing["finish"]-timing["start"]} seconds!')
+  env_file = open('env_info.json','r')
+  environment = json.loads(env_file.read())
+  env_file.close()
   py_v = sys.version_info
-  uname = platform.uname()
-  cpu = psutil.cpu_freq()
-  mem = psutil.virtual_memory()
+  os = environment['os']
+  os_release = environment['os_release']
+  os_version = environment['os_version']
+  machine = environment['machine']
+  processor = environment['processor']
+  cpu_freq = environment['cpu_freq']
+  memory = environment['memory']
   with open(f'{filepath.split(".")[0]}_timings.csv', 'a', newline='') as tcsv:
     twriter = csv.writer(tcsv, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
-    twriter.writerow(['Python',f'{py_v.major}.{py_v.minor}.{py_v.micro}',arg,timing['finish'] - timing['start'],uname.system,uname.release,uname.version,uname.machine,uname.processor,cpu.current,mem.total,timing['start']])
+    twriter.writerow(['Python',f'{py_v.major}.{py_v.minor}.{py_v.micro}',arg,timing['finish'] - timing['start'],os,os_release,os_version,machine,processor,cpu_freq,memory,timing['start']])
     tcsv.close()
 
-def is_even(n):
+def is_even(n: int) -> bool:
   return not(n & 1)
 
-def is_odd(n):
+def is_odd(n: int) -> bool:
   return n & 1
 
-def is_palindrome(s):
+def is_palindrome(s) -> bool:
   if(str(s) == str(s)[::-1]):
     return True
 
-def is_prime(n):
+def is_prime(n: int) -> bool:
   import math
   if (n < 1 or (not isinstance(n,int))):
     return None
@@ -49,13 +57,13 @@ def is_prime(n):
 
   return True
 
-def product_of_list(list):
+def product_of_list(list: list[int]) -> int:
   result = 1
   for i in list:
     result *= int(i)
   return result
 
-def is_pythagorean_triple(a,b,c):
+def is_pythagorean_triple(a: int,b: int,c: int) -> bool:
   if (a**2+b**2==c**2 or a**2+c**2==b**2 or b**2+c**2==a**2):
     return True
   return False
