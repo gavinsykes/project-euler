@@ -1,9 +1,10 @@
-def fullprint(challenge,fun,arg,filepath):
+from typing import Callable
+
+
+def fullprint(challenge: str,fun: Callable,arg,filepath: str):
   import time
   import csv
   import json
-  import platform
-  import psutil
   import sys
   timing = {}
   timing['start'] = time.time()
