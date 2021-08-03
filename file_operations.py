@@ -7,11 +7,9 @@ workingdirectory = os.getcwd()
 this_directory = os.path.dirname(__file__)
 
 def csv_timings_file_exists(problem_number: int) -> bool:
-  print(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv')
   return file_exists(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv')
 
 def csv_timings_file_prepared(problem_number: int) -> bool:
-  print('Checking if CSV file for problem {} is prepared.'.format(problem_number))
   if not csv_timings_file_exists(problem_number):
     return False
   import csv
@@ -28,11 +26,12 @@ def csv_timings_file_is_empty(problem_number: int) -> bool:
   return file_is_empty(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv')
 
 def prepare_csv_timings_file(problem_number: int) -> None:
-  if csv_timings_file_prepared(problem_number):
-    print('No need to continue')
-    return
-  if not csv_timings_file_is_empty(problem_number):
-    raise Exception('The CSV timings file for problem {} isn\'t prepared, but also doesn\'t appear to be empty. Manual intervention required.'.format(str(problem_number)))
+  if csv_timings_file_exists(problem_number):
+    if not csv_timings_file_is_empty(problem_number):
+      if csv_timings_file_prepared(problem_number):
+        return
+      else:
+        raise Exception('The CSV timings file for problem {} isn\'t prepared, but also doesn\'t appear to be empty. Manual intervention required.'.format(str(problem_number)))
   import csv
   with open(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv', 'w', newline='') as csv_file:
       writer = csv.writer(csv_file, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)

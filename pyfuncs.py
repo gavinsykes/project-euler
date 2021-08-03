@@ -31,7 +31,7 @@ def fullprint(challenge: str,fun: Callable,arg,filepath: str) -> None:
   processor = environment['processor']
   cpu_freq = environment['cpu_freq']
   memory = environment['memory']
-  prepare_csv_timings_file(f'{filepath.split(".")[0]}_timings.csv')
+  prepare_csv_timings_file(filepath.split(".")[0].split("_")[2])
   with open(f'{filepath.split(".")[0]}_timings.csv', 'a', newline='') as tcsv:
     twriter = csv.writer(tcsv, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
     twriter.writerow(['Python',f'{py_v.major}.{py_v.minor}.{py_v.micro}',arg,timing['finish'] - timing['start'],os,os_release,os_version,machine,processor,cpu_freq,memory,timing['start']])
