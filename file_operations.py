@@ -13,16 +13,15 @@ def csv_timings_file_exists(problem_number: int) -> bool:
 def csv_timings_file_prepared(problem_number: int) -> bool:
   print('Checking if CSV file for problem {} is prepared.'.format(problem_number))
   if not csv_timings_file_exists(problem_number):
-    print('It doesn\'t exist.')
     return False
   import csv
   with open(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv', newline='') as csv_file:
     reader = csv.reader(csv_file)
     row1 = next(reader)
     if row1[0] == 'language':
-      print('It\'s prepared')
+      csv_file.close()
       return True
-    print('It isn\'t prepared')
+    csv_file.close()
     return False
 
 def csv_timings_file_is_empty(problem_number: int) -> bool:
@@ -38,6 +37,7 @@ def prepare_csv_timings_file(problem_number: int) -> None:
   with open(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv', 'w', newline='') as csv_file:
       writer = csv.writer(csv_file, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
       writer.writerow(['language', 'language_version', 'input', 'time', 'os', 'os_release', 'os_version', 'machine', 'processor', 'cpu_freq', 'memory', 'timestamp'])
+      csv_file.close()
 
 with open('languages.json', 'r') as im:
   langs=im.read()
