@@ -1,6 +1,6 @@
 __pycache__
 github_credentials.json
-wp_config.py
+wp_credentials.json
 env_info.json
 
 *.class
