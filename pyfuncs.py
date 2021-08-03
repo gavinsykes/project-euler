@@ -1,7 +1,6 @@
 from typing import Callable
 
 def fullprint(challenge: str,fun: Callable,arg,filepath: str) -> None:
-  print(__file__)
   import time
   import csv
   import os
