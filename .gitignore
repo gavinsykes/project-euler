@@ -1,6 +1,6 @@
 __pycache__
-updategists_config.py
-publish_to_wordpress_config.py
+github_credentials.json
+wp_config.py
 env_info.json
 
 *.class
