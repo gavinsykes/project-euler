@@ -29,7 +29,14 @@ def markdown_file_is_empty(problem_number):
 
 def code_files_exist(problem_number):
   for key in language_extensions.keys():
-    filepath = workingdirectory + '/problem_' + str(problem_number) + '/problem_' + str(key)
+    filepath = workingdirectory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + str(key)
+    if file_exists(filepath) and not file_is_empty(filepath):
+      return True
+  return False
+
+def code_file_exists(problem_number,language):
+  for extension in list(l['extensions'] for l in languages if l['name'] == language)[0]:
+    filepath = workingdirectory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + str(extension)
     if file_exists(filepath) and not file_is_empty(filepath):
       return True
   return False
@@ -46,3 +53,9 @@ def get_markdown_file_contents(problem_number):
   if fi.mode == 'r':
     contents = fi.read()
     return contents
+
+def main():
+  print(code_file_exists(1,'Python'))
+
+if __name__ == '__main__':
+  main()

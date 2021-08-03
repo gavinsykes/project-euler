@@ -1,4 +1,5 @@
-import publish_to_wordpress_config as config
+import wp_config as config
+from file_operations import markdown_file_exists, file_is_empty, markdown_file_is_empty, get_file_contents
 
 import requests
 import json
@@ -6,7 +7,7 @@ import os
 from datetime import datetime, timedelta
 
 zeroth_post_date = datetime(2018,12,30,15,0,0)
-workingdirectory = os.getcwd()
+workingdirectory = os.path.dirname(__file__)
 
 language_extensions = {'.c':'C',
                        '.cpp':'C++',
@@ -95,3 +96,9 @@ def publish(post):
   p = requests.post(url=config.URL,headers=config.HEADERS,json=json.dumps(post))
   print(p)
   print('Tutto bene! Your new post is at ' + json.loads(p.content)['link'])
+
+def main():
+  print(get_all_euler_blog_posts())
+
+if __name__ == '__main__':
+  main()

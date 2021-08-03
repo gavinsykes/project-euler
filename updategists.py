@@ -1,4 +1,4 @@
-import updategists_config as config
+import github_config as config
 
 import copy
 import os
@@ -21,11 +21,8 @@ languages = {
 # Better download all the gists currently on my account
 def get_all_gists_for_user(user):
   return requests.get(
-    config.GITHUB_API + 'users/%s/gists'%user,
-    headers = config.HEADERS
+    config.GITHUB_API + 'users/%s/gists'%user
   ).json()
-
-gists = get_all_gists_for_user(config.USERNAME)
 
 # And we need to know what directory we're currently working in
 workingdirectory = os.getcwd()
@@ -50,6 +47,7 @@ def pick_action(actions):
 
 # Pull current gists
 def get_gists():
+  gists = get_all_gists_for_user(config.USERNAME)
   defaultdict = {'C':'No','C++':'No','Java':'No','JavaScript':'No','PHP':'No','Python':'No','Rust':'No'}
   problems = {'1':copy.copy(defaultdict)}
   for gist in gists:
@@ -201,3 +199,9 @@ def updategists():
 # elif chosen_action == 2:
 #  print('What gists do I currently have published?')
 #  print(get_gists())
+
+def main():
+  print(get_gists())
+
+if __name__ == '__main__':
+  main()
