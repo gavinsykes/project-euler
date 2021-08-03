@@ -7,7 +7,12 @@ export const is_palindrome = n => n.toString().split('').every((c,i) => c === n.
 
 export const productOfArray = array => array.reduce((accumulator,current) => current * accumulator,1);
 
-export const is_pythagorean_triple = (a,b,c) => (a**2+b**2==c**2 || a**2+c**2==b**2 || b**2+c**2==a**2);
+export const is_pythagorean_triple = (a,b,c) => {
+  const a_squared = a**2;
+  const b_squared = b**2;
+  const c_squared = c**2;
+  return a_squared + b_squared == c_squared || a_squared + c_squared == b_squared || b_squared + c_squared == a_squared
+};
 
 export const fullprint = (challenge,fun,argument,filepath) => {
   const timing = {};

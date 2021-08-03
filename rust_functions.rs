@@ -7,7 +7,10 @@ pub fn is_odd(n: i64) -> bool {
 }
 
 pub fn is_pythagorean_triple(a: u64,b: u64,c: u64) -> bool {
-  if (a.pow(2) + b.pow(2) == c.pow(2) || a.pow(2) + c.pow(2) == b.pow(2) || b.pow(2) + c.pow(2) == a.pow(2)) {
+  let a_squared: u64 = a.pow(2);
+  let b_squared: u64 = b.pow(2);
+  let c_squared: u64 = c.pow(2);
+  if (a_squared + b_squared == c_squared || a_squared + c_squared == b_squared || b_squared + c_squared == a_squared) {
     true;
   }
   false;

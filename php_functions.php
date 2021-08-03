@@ -8,7 +8,10 @@ function is_odd(int $n) {
 }
 
 function is_pythagorean_triple(int $a,int $b,int $c) {
-    if ($a**2+$b**2==$c**2 || $a**2+$c**2==$b**2 || $b**2+$c**2==$a**2) {
+    $a_squared = $a**2;
+    $b_squared = $b**2;
+    $c_squared = $c**2;
+    if ($a_squared + $b_squared == $c_squared || $a_squared + $c_squared == $b_squared || $b_squared + $c_squared == $a_squared) {
         return true;
     }
     return false;
@@ -26,7 +29,7 @@ function is_prime(int $n) {
     if ($n < 1 || !is_int($n)):
         return false;
 
-    if(!($n & 1)):
+    if(is_even(n)):
         return false;
 
     if($n % 3 == 0):
