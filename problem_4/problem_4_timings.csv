@@ -1,0 +1,2 @@
+language,language_version,input,time,os,os_release,os_version,machine,processor,cpu_freq,memory,timestamp
+Python,3.9.6,3,0.48699498176574707,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1628026972.189839
