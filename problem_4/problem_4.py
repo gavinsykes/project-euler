@@ -1,7 +1,8 @@
 import argparse
 import sys
+import os
 
-sys.path.append('/home/gavin/project-euler')
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import pyfuncs
 
 challenge = 'Find the largest palindrome made from the product of 2 numbers of {} digits:'
@@ -17,9 +18,9 @@ if (x < 1):
 if (not isinstance(x,int)):
   raise Exception(f'You entered {x}, which is not an integer, please try a positive integer.')
 
-def largest_palindrome_product(n):
+def euler_4(n):
     if ( (n < 1) or (not isinstance(n, int)) ):
-        return undefined
+        return None
 
     result = 0
     for i in range(10**n):
@@ -28,4 +29,4 @@ def largest_palindrome_product(n):
                 result = i*j
     return result
 
-pyfuncs.fullprint(challenge,largest_palindrome_product,x)
+pyfuncs.fullprint(challenge,euler_4,x,__file__)
