@@ -91,7 +91,7 @@ def get_markdown_file_contents(problem_number):
     return contents
 
 def main():
-  prepare_csv_timings_file(67)
+  return None
 
 if __name__ == '__main__':
   main()
