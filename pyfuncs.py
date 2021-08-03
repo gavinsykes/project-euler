@@ -1,10 +1,13 @@
 from typing import Callable
 
 def fullprint(challenge: str,fun: Callable,arg,filepath: str) -> None:
+  print(__file__)
   import time
   import csv
+  import os
   import json
   import sys
+  from file_operations import prepare_csv_timings_file
   timing = {}
   timing['start'] = time.time()
   if arg:
@@ -17,7 +20,7 @@ def fullprint(challenge: str,fun: Callable,arg,filepath: str) -> None:
   print(f'Result: {result}')
   print(f'End time: {timing["finish"]}')
   print(f'This returns {result} in {timing["finish"]-timing["start"]} seconds!')
-  env_file = open('env_info.json','r')
+  env_file = open(os.path.dirname(__file__) + '/env_info.json','r')
   environment = json.loads(env_file.read())
   env_file.close()
   py_v = sys.version_info
@@ -28,6 +31,7 @@ def fullprint(challenge: str,fun: Callable,arg,filepath: str) -> None:
   processor = environment['processor']
   cpu_freq = environment['cpu_freq']
   memory = environment['memory']
+  prepare_csv_timings_file(f'{filepath.split(".")[0]}_timings.csv')
   with open(f'{filepath.split(".")[0]}_timings.csv', 'a', newline='') as tcsv:
     twriter = csv.writer(tcsv, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
     twriter.writerow(['Python',f'{py_v.major}.{py_v.minor}.{py_v.micro}',arg,timing['finish'] - timing['start'],os,os_release,os_version,machine,processor,cpu_freq,memory,timing['start']])
