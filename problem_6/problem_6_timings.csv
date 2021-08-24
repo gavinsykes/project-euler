@@ -1,0 +1,19 @@
+language,language_version,input,time,os,os_release,os_version,machine,processor,cpu_freq,memory,timestamp
+Python,3.9.6,10,0.0,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1629846641.2189226
+Python,3.9.6,15,0.0,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1629846652.189307
+Python,3.9.6,15,0.0,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1629846655.5598874
+Python,3.9.6,13,0.0,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1629846657.916806
+Python,3.9.6,12,0.0,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1629846660.554513
+Python,3.9.6,11,0.0,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1629846662.8349524
+Python,3.9.6,1,0.0,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1629846665.0035162
+Python,3.9.6,2,0.0,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1629846668.6677282
+Python,3.9.6,3,0.0,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1629846670.3555717
+Python,3.9.6,4,0.0,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1629846672.5329342
+Python,3.9.6,5,0.0,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1629846674.7382019
+Python,3.9.6,6,0.0,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1629846678.1706455
+Python,3.9.6,66,0.0,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1629846682.7741556
+Python,3.9.6,666,0.0,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1629846684.3529837
+Python,3.9.6,6666,0.004389286041259766,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1629846685.8634083
+Python,3.9.6,66666,0.02218174934387207,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1629846687.2280068
+Python,3.9.6,666666,0.18241214752197266,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1629846688.6222284
+Python,3.9.6,6666666,1.8391225337982178,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1629846690.6781356
