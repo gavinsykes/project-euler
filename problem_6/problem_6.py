@@ -1,7 +1,8 @@
 import argparse
 import sys
+import os
 
-sys.path.append('/home/gavin/project-euler')
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import pyfuncs
 
 challenge = 'Find the difference between the sum of the squares of the first {} natural numbers and the square of the sum:'
@@ -19,7 +20,7 @@ if (not isinstance(x,int)):
 
 def euler_6(n):
   if ( (n < 1) or (not isinstance(n, int)) ):
-    return undefined
+    return None
 
   result = 0
   sumsquares = 0
@@ -33,4 +34,4 @@ def euler_6(n):
   result = squaresum - sumsquares
   return result
 
-pyfuncs.fullprint(challenge,euler_6,x)
+pyfuncs.fullprint(challenge,euler_6,x,__file__)
