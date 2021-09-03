@@ -8,10 +8,14 @@ personal_access_token: obtained from https://github.com/settings/tokens
 
 import json
 
-with open('github_credentials.json', 'r') as json_file:
-    creds=json_file.read()
+def get_credentials():
+    with open('github_credentials.json', 'r') as json_file:
+        creds=json_file.read()
 
-credentials = json.loads(creds)
+    credentials = json.loads(creds)
+    return credentials
+
+credentials = get_credentials()
 
 USERNAME = credentials['username']
 GITHUB_API = credentials['github_api']
