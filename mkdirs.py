@@ -1,6 +1,6 @@
 import os
 
-working_directory = os.getcwd()
+working_directory = os.path.dirname(__file__)
 extensions = ['.c','.cpp','.java','.js','.md','.php','.py','.rs','.ts']
 
 def mkdirs():
@@ -39,4 +39,8 @@ def mkfiles():
       else:
         print(f'Problem {i} {ext} file already exist')
 
-mkfiles()
+def main():
+  mkfiles()
+
+if __name__ = '__main__':
+  main()
