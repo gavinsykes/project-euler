@@ -4,7 +4,7 @@
 # languages.json for the rest of this program to use.                       #
 #############################################################################
 languages = [
-    'C','C++','C#','Java','JavaScript','PHP','Python','Rust','TypeScript'
+    'C','C++','C#','Go','Java','JavaScript','PHP','Python','Rust','TypeScript'
 ]
 
 import requests
