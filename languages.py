@@ -20,8 +20,21 @@ def main():
         r = requests.get(language_gist_url).json()
     except:
         r = requests.get(backup_language_gist_url).json()
-
+    
     extensions = [l for l in r if l['name'] in languages]
+
+    for e in extensions:
+        if len(e['extensions']) == 1:
+            print('\x1b[1;32;40m' + f"Only one extension found for {e['name']}: \"{e['extensions'][0]}\", setting it as the main one." + '\x1b[0m')
+            e['main'] = e['extensions'][0]
+            continue
+        inp = input(f"The listed extensions for {e['name']} are {e['extensions']}, which one is the main one?\n")
+        while not inp in e['extensions']:
+            print('\x1b[1;31;40m' + f"Sorry, it seems \"{inp}\" isn't one of the listed extensions." + '\x1b[0m')
+            print(f"The extensions are {e['extensions']} for {e['name']}.")
+            inp = input("Which one do you want to use?\n")
+        e['main'] = inp
+
 
     f = open('languages.json','w')
     if f.mode == 'w':
