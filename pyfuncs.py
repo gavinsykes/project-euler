@@ -4,7 +4,6 @@ def fullprint(challenge: str,fun: Callable,arg,filepath: str) -> None:
   import inspect
   problem_number = inspect.stack()[1][1].split('_')[-1].split('.')[0]
   import time
-  import csv
   import os
   import json
   import sys
@@ -33,11 +32,7 @@ def fullprint(challenge: str,fun: Callable,arg,filepath: str) -> None:
   cpu_freq = environment['cpu_freq']
   memory = environment['memory']
   prepare_csv_timings_file(problem_number)
-  append_data_to_csv_timings_file(problem_number = problem_number,language = 'Python', language_version=f'{py_v.major}.{py_v.minor}.{py_v.micro}',input=arg,time=timing['finish'] - timing['start'],os=operating_system,os_release=os_release,os_version=os_version,machine=machine,processor=processor,memory=memory,timestamp=timing['start'])
-  with open(f'problem_{problem_number}/problem_{problem_number}_timings.csv', 'a', newline='') as tcsv:
-    twriter = csv.writer(tcsv, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
-    twriter.writerow(['Python',f'{py_v.major}.{py_v.minor}.{py_v.micro}',arg,timing['finish'] - timing['start'],operating_system,os_release,os_version,machine,processor,cpu_freq,memory,timing['start']])
-    tcsv.close()
+  append_data_to_csv_timings_file(problem_number = problem_number,language = 'Python', language_version=f'{py_v.major}.{py_v.minor}.{py_v.micro}',input=arg,time=timing['finish'] - timing['start'],os=operating_system,os_release=os_release,os_version=os_version,machine=machine,processor=processor,cpu_freq=cpu_freq,memory=memory,timestamp=timing['start'])
 
 def is_even(n: int) -> bool:
   return not(n & 1)
