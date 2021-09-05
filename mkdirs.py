@@ -1,45 +1,55 @@
+import json
 import os
 
+number_of_project_euler_problems = 736
+test_range = range(700,702)
 working_directory = os.path.dirname(__file__)
-extensions = ['.c','.cpp','.java','.js','.md','.php','.py','.rs','.ts']
+def get_languages():
+    f = open('languages.json','r')
+    if f.mode == 'r':
+        languages = json.loads(f.read())
+        return languages
+extensions = list([lang['name'],lang['main']] for lang in get_languages())
 
 def mkdirs():
-  for i in range(1,736):
+  for i in test_range:
     path = working_directory + '/problem_' + str(i)
     if not os.path.isdir(path):
       try:
         os.mkdir(path)
       except:
-        print(f'Creation of the directory {path} failed')
+        print('\x1b[1;31m' + f'Creation of the directory {path} failed' + '\x1b[0m')
       else:
-        print(f'Creation of the directory {path} was great success!')
+        print('\x1b[1;32m' + f'Creation of the directory {path} was great success!' + '\x1b[0m')
     else:
-      print(f'Directory {path} already exist')
+      print('\x1b[1;31m' + f'Directory {path} already exist' + '\x1b[0m')
 
 def mkfiles():
-  for i in range(1,736):
+  for i in test_range:
     os.chdir(working_directory + '/problem_' + str(i))
     if not os.path.isfile('problem_' + str(i) + '_timings.csv'):
       try:
         file = open('problem_' + str(i) + '_timings.csv','w')
         file.close()
       except:
-        print(f'Creation of the timings CSV in problem_{i} failed')
+        print('\x1b[1;31m' + f'Creation of the timings CSV for problem {i} failed' + '\x1b[0m')
       else:
-        print(f'Creation of the timings CSV in problem_{i} was great success!')
+        print('\x1b[1;32m' + f'Creation of the timings CSV for problem {i} was great success!' + '\x1b[0m')
     for ext in extensions:
-      if not os.path.isfile('problem_' + str(i) + ext):
+      if not os.path.isfile('problem_' + str(i) + ext[1]):
         try:
-          file = open('problem_' + str(i) + ext,'w')
+          file = open('problem_' + str(i) + ext[1],'w')
           file.close()
         except:
-          print(f'Creation of {ext} file in problem_{i} failed')
+          print('\x1b[1;31m' + f'Creation of {ext[0]} file for problem {i} failed' + '\x1b[0m')
         else:
-          print(f'Creation of {ext} file in problem_{i} was great success!')
+          print('\x1b[1;32m' + f'Creation of {ext[0]} file for problem {i} was great success!' + '\x1b[0m')
       else:
-        print(f'Problem {i} {ext} file already exist')
+        print('\x1b[1;31m' + f'Problem {i} {ext[0]} file already exist' + '\x1b[0m')
 
 def main():
+  print(extensions)
+  mkdirs()
   mkfiles()
 
 if __name__ == '__main__':
