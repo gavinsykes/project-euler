@@ -20,9 +20,9 @@ def mkdirs():
       except:
         print('\x1b[1;31m' + f'Creation of the directory {path} failed' + '\x1b[0m')
       else:
-        print('\x1b[1;32m' + f'Creation of the directory {path} was great success!' + '\x1b[0m')
+        print('\x1b[1;32m' + f'Creation of the directory {path} was successful!' + '\x1b[0m')
     else:
-      print('\x1b[1;31m' + f'Directory {path} already exist' + '\x1b[0m')
+      print('\x1b[1;31m' + f'Directory {path} already exists' + '\x1b[0m')
 
 def mkfiles():
   for i in problem_range:
@@ -34,7 +34,7 @@ def mkfiles():
       except:
         print('\x1b[1;31m' + f'Creation of the timings CSV for problem {i} failed' + '\x1b[0m')
       else:
-        print('\x1b[1;32m' + f'Creation of the timings CSV for problem {i} was great success!' + '\x1b[0m')
+        print('\x1b[1;32m' + f'Creation of the timings CSV for problem {i} was successful!' + '\x1b[0m')
     for ext in extensions:
       if not os.path.isfile('problem_' + str(i) + ext[1]):
         try:
@@ -43,12 +43,11 @@ def mkfiles():
         except:
           print('\x1b[1;31m' + f'Creation of {ext[0]} file for problem {i} failed' + '\x1b[0m')
         else:
-          print('\x1b[1;32m' + f'Creation of {ext[0]} file for problem {i} was great success!' + '\x1b[0m')
+          print('\x1b[1;32m' + f'Creation of {ext[0]} file for problem {i} was successful!' + '\x1b[0m')
       else:
-        print('\x1b[1;31m' + f'Problem {i} {ext[0]} file already exist' + '\x1b[0m')
+        print('\x1b[1;31m' + f'Problem {i} {ext[0]} file already exists' + '\x1b[0m')
 
 def main():
-  print(extensions)
   mkdirs()
   mkfiles()
 
