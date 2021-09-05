@@ -2,7 +2,7 @@ import json
 import os
 
 number_of_project_euler_problems = 736
-test_range = range(700,702)
+problem_range = range(1,number_of_project_euler_problems + 1)
 working_directory = os.path.dirname(__file__)
 def get_languages():
     f = open('languages.json','r')
@@ -12,7 +12,7 @@ def get_languages():
 extensions = list([lang['name'],lang['main']] for lang in get_languages())
 
 def mkdirs():
-  for i in test_range:
+  for i in problem_range:
     path = working_directory + '/problem_' + str(i)
     if not os.path.isdir(path):
       try:
@@ -25,7 +25,7 @@ def mkdirs():
       print('\x1b[1;31m' + f'Directory {path} already exist' + '\x1b[0m')
 
 def mkfiles():
-  for i in test_range:
+  for i in problem_range:
     os.chdir(working_directory + '/problem_' + str(i))
     if not os.path.isfile('problem_' + str(i) + '_timings.csv'):
       try:
