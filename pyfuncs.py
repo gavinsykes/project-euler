@@ -32,7 +32,7 @@ def fullprint(challenge: str,fun: Callable,arg,filepath: str) -> None:
   cpu_freq = environment['cpu_freq']
   memory = environment['memory']
   prepare_csv_timings_file(problem_number)
-  append_data_to_csv_timings_file(problem_number = problem_number,language = 'Python', language_version=f'{py_v.major}.{py_v.minor}.{py_v.micro}',input=arg,time=timing['finish'] - timing['start'],os=operating_system,os_release=os_release,os_version=os_version,machine=machine,processor=processor,cpu_freq=cpu_freq,memory=memory,timestamp=timing['start'])
+  append_data_to_csv_timings_file(problem_number = problem_number,language = 'Python', language_version=f'{py_v.major}.{py_v.minor}.{py_v.micro}',input=arg,time=timing['finish'] - timing['start'],operating_system=operating_system,os_release=os_release,os_version=os_version,machine=machine,processor=processor,cpu_freq=cpu_freq,memory=memory,timestamp=timing['start'])
 
 def is_even(n: int) -> bool:
   return not(n & 1)
