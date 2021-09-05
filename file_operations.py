@@ -41,7 +41,7 @@ def prepare_csv_timings_file(problem_number: int) -> None:
 def append_data_to_csv_timings_file(problem_number: int,language: str, language_version: str, input: int, time: float, operating_system: str, os_release: str, os_version: str, machine: str, processor: str, cpu_freq: int, memory: int, timestamp: float) -> None:
   prepare_csv_timings_file(problem_number)
   import csv
-  with open(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv', 'w', newline='') as csv_file:
+  with open(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv', 'a', newline='') as csv_file:
       writer = csv.writer(csv_file, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
       writer.writerow([language, language_version, input, time, operating_system, os_release, os_version, machine, processor, cpu_freq, memory, timestamp])
       csv_file.close()
