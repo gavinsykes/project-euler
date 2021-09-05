@@ -31,7 +31,7 @@ def main():
         inp = input(f"The listed extensions for {e['name']} are {e['extensions']}, which one is the main one?\n")
         while not inp in e['extensions']:
             print('\x1b[1;31;40m' + f"Sorry, it seems \"{inp}\" isn't one of the listed extensions for {e['name']}." + '\x1b[0m')
-            print(f"The extensions are {e['extensions']}")
+            print(f"The extensions are {e['extensions']} for {e['name']}.")
             inp = input("Which one do you want to use?\n")
         e['main'] = inp
 
