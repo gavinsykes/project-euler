@@ -23,7 +23,7 @@ def fullprint(challenge: str,fun: Callable,arg,filepath: str) -> None:
   try:
     env_file = open(os.path.dirname(__file__) + '/env_info.json','r')
   except:
-    raise Exception("Environment info JSON file not found, it should be in root and be called \"env_info.json\". Try running \"python3 get_env.py\" first.")
+    raise Exception("\x1b[1;31mEnvironment info JSON file not found, it should be in root and be called \"env_info.json\". Try running \"python3 get_env.py\" first.\x1b[0m")
   environment = json.loads(env_file.read())
   env_file.close()
   py_v = sys.version_info
