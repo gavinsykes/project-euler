@@ -61,7 +61,7 @@ def is_prime(n: int) -> bool:
 
   return True
 
-def product_of_list(list: list[int]) -> int:
+def product_of_list(list: "list[int]") -> int:
   result = 1
   for i in list:
     result *= int(i)
