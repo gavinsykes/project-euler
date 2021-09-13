@@ -8,6 +8,7 @@ import json
 
 uname = platform.uname()
 cpu = psutil.cpu_freq()
+cores = psutil.cpu_count()
 mem = psutil.virtual_memory()
 
 environment = {'os':uname.system,'os_release':uname.release,'os_version':uname.version,'machine':uname.machine,'processor':uname.processor,'cpu_freq':cpu.current,'memory':mem.total}
