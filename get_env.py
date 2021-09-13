@@ -1,10 +1,10 @@
 import platform
+import json
+
 try:
     import psutil
 except:
     raise Exception("\x1b[1;31mpsutil isn't installed yet. You should be able to run \"pip3 install psutil\" to install it.\x1b[0m")
-
-import json
 
 uname = platform.uname()
 cpu = psutil.cpu_freq()
