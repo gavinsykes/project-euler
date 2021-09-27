@@ -1,21 +1,24 @@
 [
-    "",
-    "Find the sum of the multiples of 3 and 5 between 1 and x",
-    "Find the sum of the even-valued terms of the Fibonnaci sequence up to x",
-    "Find the largest prime factor of x",
-    "Find the largest palindromic number made from the product of 2 numbers of x digits",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
+    null,
+    {
+        "en": "Find the sum of the multiples of 3 and 5 between 1 and x",
+        "es": "Calcular la suma de los múltiplos de 3 y de 5 que sean entre 1 y x"
+    },
+    {
+        "en": "Find the sum of the even-valued terms of the Fibonnaci sequence up to x",
+        "es": "Calcular la suma de los términos pares de la Sucesión de Fibonacci hasta x"
+    },
+    {
+        "en": "Find the largest prime factor of x",
+        "es": ""
+    },
+    {
+        "en": "Find the largest palindromic number made from the product of 2 numbers of x digits",
+        "es": ""
+    },
+    {
+        "en": "Find the smallest positive number divisible by all numbers from 1 to x",
+        "es": ""
+    }
 ]
   
