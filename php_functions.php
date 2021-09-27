@@ -1,4 +1,12 @@
 <?php
+define("CLI", defined("STDIN")
+    || (
+        empty($_SERVER["REMOTE_ADDR"])
+        && !isset($_SERVER["HTTP_USER_AGENT"])
+        && count($_SERVER["argv"]) > 0
+    )
+);
+
 function is_even(int $n) {
     return !($n & 1);
 }
@@ -26,17 +34,15 @@ function is_palindrome(string $s) {
 }
 
 function is_prime(int $n) {
-    if ($n < 1 || !is_int($n)):
+    if (
+        $n < 1
+        || !is_int($n)
+        || is_even($n)
+        || $n % 3 == 0
+        || (substr($n,-1) == "5") || (substr($n,-1) == "0")
+    ) {
         return false;
-
-    if(is_even(n)):
-        return false;
-
-    if($n % 3 == 0):
-        return false;
-
-    if((substr(strval($n),-1) == '5') || (substr(strval($n),-1) == '0')):
-        return false;
+    }
 
     for ($i = 1; $i < $n/6; $i++) {
         if($n % (6 * $i - 1) == 0 || $n % (6 * $i + 1) == 0) {
