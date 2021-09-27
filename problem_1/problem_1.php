@@ -1,4 +1,6 @@
 <?php
+require_once("php_functions.php");
+
 function euler_1($n) {
     $result = [
         'terms' => [],
@@ -27,8 +29,8 @@ $v = $_REQUEST['val'];
 $c = $_SERVER['argv'][1];
 
 if ($v) {
-  echo euler_1($v);
+    full_print("Challenge","euler_1",$v);
 } else if ($c) {
-  echo euler_1($c);
+    full_print("Challenge","euler_1",$c);
 }
 ?>
