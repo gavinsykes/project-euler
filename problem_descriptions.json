@@ -1,7 +1,7 @@
 [
     null,
     {
-        "ca": "",
+        "ca": "Calcular la suma dels múltiples de 3 i de 5 que siguin entre 1 i x",
         "de": "",
         "en": "Find the sum of the multiples of 3 and 5 between 1 and x",
         "es": "Calcular la suma de los múltiplos de 3 y de 5 que sean entre 1 y x",
@@ -9,7 +9,7 @@
         "it": "Calcola la somma dei multipli di 3 e 5 compresi tra 1 e x"
     },
     {
-        "ca": "",
+        "ca": "Calcular la suma dels termes parells de la Successió de Fibonacci fins x ",
         "de": "",
         "en": "Find the sum of the even-valued terms of the Fibonnaci sequence up to x",
         "es": "Calcular la suma de los términos pares de la Sucesión de Fibonacci hasta x",
