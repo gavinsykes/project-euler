@@ -61,8 +61,7 @@ function full_print(string $challenge,$fun,int $arg): void {
     $cpu_freq = $environment['cpu_freq'];
     $memory = $environment['memory'];
     prepare_csv_timings_file($problem_number);
-    append_data_to_csv_timings_file($problem_number,'PHP', implode(".",$php_version),$arg,$timing['finish'] - $timing['start'],$operating_system,$os_release,$os_version,$machine,$processor,$cpu_freq,$memory,$timing['start'])
-    */
+    append_data_to_csv_timings_file($problem_number,'PHP', implode(".",$php_version),$arg,$timing['finish'] - $timing['start'],$operating_system,$os_release,$os_version,$machine,$processor,$cpu_freq,$memory,$timing['start']);
 }
 
 function is_even(int $n) {
