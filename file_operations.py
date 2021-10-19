@@ -1,10 +1,28 @@
 import os
 import datetime
 import json
+import argparse
 
 zeroth_post_date = datetime.datetime(2018,12,30,15,0,0)
 workingdirectory = os.getcwd()
 this_directory = os.path.dirname(__file__)
+
+parser = argparse.ArgumentParser(description = 'This file contains all of the necessary file operations to keep this repository operating.')
+parser.add_argument('--problem_number', type = int, help = 'Run this script with --csv and the relevant info in order to check and add data to the relevant CSV')
+parser.add_argument('-c', '--csv', action = "store_true", help = 'Run this script with --csv and the relevant info in order to check and add data to the relevant CSV')
+parser.add_argument('--language', help = 'Run this script with --csv and the relevant info in order to check and add data to the relevant CSV')
+parser.add_argument('--language_version', help = 'Run this script with --csv and the relevant info in order to check and add data to the relevant CSV')
+parser.add_argument('--input', type = int, help = 'Run this script with --csv and the relevant info in order to check and add data to the relevant CSV')
+parser.add_argument('--time', type = float, help = 'Run this script with --csv and the relevant info in order to check and add data to the relevant CSV')
+parser.add_argument('--operating_system', help = 'Run this script with --csv and the relevant info in order to check and add data to the relevant CSV')
+parser.add_argument('--os_release', help = 'Run this script with --csv and the relevant info in order to check and add data to the relevant CSV')
+parser.add_argument('--os_version', help = 'Run this script with --csv and the relevant info in order to check and add data to the relevant CSV')
+parser.add_argument('--machine', help = 'Run this script with --csv and the relevant info in order to check and add data to the relevant CSV')
+parser.add_argument('--processor', help = 'Run this script with --csv and the relevant info in order to check and add data to the relevant CSV')
+parser.add_argument('--cpu_freq', type = int, help = 'Run this script with --csv and the relevant info in order to check and add data to the relevant CSV')
+parser.add_argument('--memory', type = int, help = 'Run this script with --csv and the relevant info in order to check and add data to the relevant CSV')
+parser.add_argument('--timestamp', type = int, help = 'Run this script with --csv and the relevant info in order to check and add data to the relevant CSV')
+args = parser.parse_args()
 
 def csv_timings_file_exists(problem_number: int) -> bool:
   return file_exists(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv')
@@ -43,7 +61,6 @@ def append_data_to_csv_timings_file(problem_number: int,language: str, language_
   import csv
   with open(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv', 'a', newline='') as csv_file:
       writer = csv.writer(csv_file, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
-      writer.writerow([language, language_version, input, time, operating_system, os_release, os_version, machine, processor, cpu_freq, memory, timestamp])
       csv_file.close()
 
 with open('languages.json', 'r') as im:
@@ -98,6 +115,9 @@ def get_markdown_file_contents(problem_number):
     return contents
 
 def main():
+  if args.csv:
+    if None not in vars(args).values():
+      append_data_to_csv_timings_file(problem_number = args.problem, language=args.language,language_version=args.language_version,input=args.input,time=args.time,operating_system=args.operating_system,os_release=args.os_release,os_version=args.os_version,machine=args.machine,processor=args.processor,cpu_freq=args.cpu_freq,memory=args.memory,timestamp=args.timestamp)
   return None
 
 if __name__ == '__main__':
