@@ -55,17 +55,32 @@ def prepare_csv_timings_file(problem_number: int) -> None:
       else:
         raise Exception('The CSV timings file for problem {} isn\'t prepared, but also doesn\'t appear to be empty. Manual intervention required.'.format(str(problem_number)))
   import csv
-  print("Adding data to CSV timings file for problem {}".format(problem_number))
+  print("Creating CSV timings file for problem {}".format(problem_number))
   with open(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv', 'w', newline='') as csv_file:
       writer = csv.writer(csv_file, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
       writer.writerow(['language', 'language_version', 'input', 'time', 'os', 'os_release', 'os_version', 'machine', 'processor', 'cpu_freq', 'memory', 'timestamp'])
       csv_file.close()
 
-def append_data_to_csv_timings_file(problem_number: int,language: str, language_version: str, input: int, time: float, operating_system: str, os_release: str, os_version: str, machine: str, processor: str, cpu_freq: int, memory: int, timestamp: float) -> None:
+def append_data_to_csv_timings_file(
+  problem_number: int,
+  language: str,
+  language_version: str,
+  input: int,
+  time: float,
+  operating_system: str,
+  os_release: str,
+  os_version: str,
+  machine: str,
+  processor: str,
+  cpu_freq: int,
+  memory: int,
+  timestamp: float
+) -> None:
   prepare_csv_timings_file(problem_number)
   import csv
   with open(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv', 'a', newline='') as csv_file:
       writer = csv.writer(csv_file, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
+      writer.writerow([language,language_version,input,time,operating_system,os_release,os_version,machine,processor,cpu_freq,memory,timestamp])
       csv_file.close()
 
 with open('languages.json', 'r') as im:
