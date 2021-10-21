@@ -20,6 +20,8 @@ function full_print(string $challenge,$fun,int $arg): void {
         $result = $fun();
     }
     $timing['finish'] = microtime(true);
+    $time_taken = $timing["finish"] - $timing["start"];
+    $timestamp = $timing["start"];
     echo $challenge . PHP_EOL;
     echo sprintf("Start time: %s",$timing["start"]) . PHP_EOL;
     echo sprintf("Result: %s",$result) . PHP_EOL;
@@ -36,6 +38,7 @@ function full_print(string $challenge,$fun,int $arg): void {
         "minor"   => PHP_MINOR_VERSION,
         "release" => PHP_RELEASE_VERSION
     ];
+    $php_version_as_string = implode(".",$php_version);
     $operating_system = $environment["os"];
     $os_release = $environment['os_release'];
     $os_version = $environment['os_version'];
@@ -43,8 +46,7 @@ function full_print(string $challenge,$fun,int $arg): void {
     $processor = $environment['processor'];
     $cpu_freq = $environment['cpu_freq'];
     $memory = $environment['memory'];
-    prepare_csv_timings_file($problem_number);
-    append_data_to_csv_timings_file($problem_number,'PHP', implode(".",$php_version),$arg,$timing['finish'] - $timing['start'],$operating_system,$os_release,$os_version,$machine,$processor,$cpu_freq,$memory,$timing['start']);
+    exec("python3 ./file_operations.py --csv -l=PHP -g=$php_version_as_string -n=$problem_number -i=$arg -f=$cpu_freq -a=$machine -m=$memory -o=$operating_system -r=$os_release -v=$os_version -p=$processor -t=$time_taken -s=$timestamp", $output, $retval);
 }
 
 function is_even(int $n) {
