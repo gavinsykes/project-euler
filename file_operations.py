@@ -44,13 +44,18 @@ def csv_timings_file_is_empty(problem_number: int) -> bool:
   return file_is_empty(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv')
 
 def prepare_csv_timings_file(problem_number: int) -> None:
+  print("Preparing CSV timings file for problem {}".format(problem_number))
   if csv_timings_file_exists(problem_number):
+    print("CSV timings file exists for problem {}".format(problem_number))
     if not csv_timings_file_is_empty(problem_number):
+      print("CSV timings file is not empty for problem {}".format(problem_number))
       if csv_timings_file_prepared(problem_number):
+        print("CSV timings file is correctly prepared for problem {}".format(problem_number))
         return
       else:
         raise Exception('The CSV timings file for problem {} isn\'t prepared, but also doesn\'t appear to be empty. Manual intervention required.'.format(str(problem_number)))
   import csv
+  print("Adding data to CSV timings file for problem {}".format(problem_number))
   with open(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv', 'w', newline='') as csv_file:
       writer = csv.writer(csv_file, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
       writer.writerow(['language', 'language_version', 'input', 'time', 'os', 'os_release', 'os_version', 'machine', 'processor', 'cpu_freq', 'memory', 'timestamp'])
