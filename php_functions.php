@@ -9,7 +9,7 @@ define("CLI", defined("STDIN")
 
 function full_print(string $challenge,$fun,int $arg): void {
     $file_path = explode("/",debug_backtrace()[0]["file"]);
-    $problem_number = explode(".",explode("_",$file_path[count($file_path) - 1])[1])[0];
+    $problem_number = explode(".",explode("_",$file_path[count($file_path) - 1])[2])[0];
     $timing = [
         "start"  => microtime(true),
         "finish" => NULL
