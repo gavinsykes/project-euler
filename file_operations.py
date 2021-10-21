@@ -118,19 +118,19 @@ def main():
   if args.csv:
     if None not in vars(args).values():
       append_data_to_csv_timings_file(
-        problem_number = args.problem_number,
-        language=args.language,
-        language_version=args.language_version,
-        input=args.input,
-        time=args.time,
-        operating_system=args.operating_system,
-        os_release=args.os_release,
-        os_version=args.os_version,
-        machine=args.machine,
-        processor=args.processor,
-        cpu_freq=args.cpu_freq,
-        memory=args.memory,
-        timestamp=args.timestamp
+        problem_number   = args.problem_number,
+        language         = args.language,
+        language_version = args.language_version,
+        input            = args.input,
+        time             = args.time,
+        operating_system = args.operating_system,
+        os_release       = args.os_release,
+        os_version       = args.os_version,
+        machine          = args.machine,
+        processor        = args.processor,
+        cpu_freq         = args.cpu_freq,
+        memory           = args.memory,
+        timestamp        = args.timestamp
       )
   return None
 
