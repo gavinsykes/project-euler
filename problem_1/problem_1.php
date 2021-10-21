@@ -1,6 +1,8 @@
 <?php
 require_once("php_functions.php");
 
+define(DEFAULT_INPUT, 1000);
+
 function euler_1($n) {
     $result = [
         'terms' => [],
@@ -25,12 +27,11 @@ function euler_1($n) {
     return json_encode($result);
 }
 
-$v = $_REQUEST['val'];
-$c = $_SERVER['argv'][1];
-
-if ($v) {
-    full_print("Challenge","euler_1",$v);
-} else if ($c) {
-    full_print("Challenge","euler_1",$c);
+if (CLI) {
+    $val = $_SERVER['argv'][1] ?? DEFAULT_INPUT;
+} else {
+    $val = $_REQUEST['val'];
 }
+
+full_print("Challenge","euler_1",$val);
 ?>
