@@ -6,23 +6,6 @@ define("CLI", defined("STDIN")
         && count($_SERVER["argv"]) > 0
     )
 );
-function prepare_csv_timings_file(int $problem_number): void {
-    if (csv_timings_file_exists($problem_number)) {
-        if (!csv_timings_file_is_empty($problem_number)) {
-            if (!csv_timings_file_prepared($problem_number)) {
-                return;
-            } else {
-                throw new Exception(sprintf("The CSV timings file for problem %s isn't prepared, but also doesn't appear to be empty. Manual intervention required.",$problem_number));
-            }
-        }
-    }
-    // Below still to be converted to Python
-      with open(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv', 'w', newline='') as csv_file:
-          writer = csv.writer(csv_file, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
-          writer.writerow(['language', 'language_version', 'input', 'time', 'os', 'os_release', 'os_version', 'machine', 'processor', 'cpu_freq', 'memory', 'timestamp'])
-          csv_file.close()
-}
-function append_data_to_csv_timings_file(int $problem_number, string $language, string $language_version, int $input, float $time, string $operating_system, string $os_release, string $os_version, string $machine, string $processor, int $cpu_freq, int $memory, float $timestamp):void {}
 
 function full_print(string $challenge,$fun,int $arg): void {
     $file_path = explode("/",debug_backtrace()[0]["file"]);
