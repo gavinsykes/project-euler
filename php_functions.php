@@ -46,7 +46,7 @@ function full_print(string $challenge,$fun,int $arg): void {
     $processor = $environment['processor'];
     $cpu_freq = $environment['cpu_freq'];
     $memory = $environment['memory'];
-    exec("python3 ./file_operations.py --csv -l=PHP -g=$php_version_as_string -n=$problem_number -i=$arg -f=$cpu_freq -a=$machine -m=$memory -o=$operating_system -r=$os_release -v=$os_version -p=$processor -t=$time_taken -s=$timestamp", $output, $retval);
+    exec("python3 ./file_operations.py --csv -l=PHP -g=$php_version_as_string -n=$problem_number -i=$arg -f=$cpu_freq -a=$machine -m=$memory -o=$operating_system -r=$os_release -v=$os_version -p=\"$processor\" -t=$time_taken -s=$timestamp", $output, $retval);
 }
 
 function is_even(int $n) {
