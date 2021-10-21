@@ -21,7 +21,7 @@ parser.add_argument('-r', '--os_release', help = 'The release of the operating s
 parser.add_argument('-v', '--os_version', help = 'The version of the operating system')
 parser.add_argument('-p', '--processor', help = 'The processor')
 parser.add_argument('-t', '--time', type = float, help = 'The time taken to solve the problem')
-parser.add_argument('-s', '--timestamp', type = int, help = 'The time that the function was run')
+parser.add_argument('-s', '--timestamp', type = float, help = 'The time that the function was run')
 args = parser.parse_args()
 
 def csv_timings_file_exists(problem_number: int) -> bool:
