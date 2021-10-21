@@ -1,7 +1,7 @@
 <?php
 require_once("php_functions.php");
 
-define(DEFAULT_INPUT, 1000);
+define("DEFAULT_INPUT", 1000);
 
 function euler_1($n) {
     $result = [
