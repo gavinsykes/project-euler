@@ -79,7 +79,7 @@ function is_prime(int $n) {
     if (
         $n < 1
         || !is_int($n)
-        || is_even($n)
+        || (is_even($n) && $n != 2)
         || $n % 3 == 0
         || (substr($n,-1) == "5") || (substr($n,-1) == "0")
     ) {

@@ -44,7 +44,7 @@ def is_prime(n: int) -> bool:
   if (n < 1 or (not isinstance(n,int))):
     return None
 
-  if((is_even(n)) or (n % 3 == 0) or (str(n)[-1:] == '5') or (str(n)[-1:] == '0')):
+  if((is_even(n) and n != 2) or (n % 3 == 0) or (str(n)[-1:] == '5') or (str(n)[-1:] == '0')):
     return False
 
   for i in range(1,int(math.floor(n/6)),1):
