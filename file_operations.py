@@ -67,16 +67,24 @@ def append_data_to_csv_timings_file(
   language_version: str,
   input: int,
   time: float,
-  operating_system: str,
-  os_release: str,
-  os_version: str,
-  machine: str,
-  processor: str,
-  cpu_freq: int,
-  memory: int,
   timestamp: float
 ) -> None:
   prepare_csv_timings_file(problem_number)
+  import os
+  import json
+  try:
+    env_file = open(os.path.dirname(__file__) + '/env_info.json','r')
+  except:
+    raise Exception("\x1b[1;31mEnvironment info JSON file not found, it should be in root and be called \"env_info.json\". Try running \"python3 get_env.py\" first.\x1b[0m")
+  environment = json.loads(env_file.read())
+  env_file.close()
+  operating_system = environment['os']
+  os_release = environment['os_release']
+  os_version = environment['os_version']
+  machine = environment['machine']
+  processor = environment['processor']
+  cpu_freq = environment['cpu_freq']
+  memory = environment['memory']
   import csv
   with open(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv', 'a', newline='') as csv_file:
       writer = csv.writer(csv_file, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)

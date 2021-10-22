@@ -4,8 +4,6 @@ def fullprint(challenge: str,fun: Callable,arg,filepath: str) -> None:
   import inspect
   problem_number = inspect.stack()[1][1].split('_')[-1].split('.')[0]
   import time
-  import os
-  import json
   import sys
   from file_operations import prepare_csv_timings_file, append_data_to_csv_timings_file
   timing = {}
@@ -20,20 +18,7 @@ def fullprint(challenge: str,fun: Callable,arg,filepath: str) -> None:
   print(f'Result: {result}')
   print(f'End time: {timing["finish"]}')
   print(f'This returns {result} in {timing["finish"]-timing["start"]} seconds!')
-  try:
-    env_file = open(os.path.dirname(__file__) + '/env_info.json','r')
-  except:
-    raise Exception("\x1b[1;31mEnvironment info JSON file not found, it should be in root and be called \"env_info.json\". Try running \"python3 get_env.py\" first.\x1b[0m")
-  environment = json.loads(env_file.read())
-  env_file.close()
   py_v = sys.version_info
-  operating_system = environment['os']
-  os_release = environment['os_release']
-  os_version = environment['os_version']
-  machine = environment['machine']
-  processor = environment['processor']
-  cpu_freq = environment['cpu_freq']
-  memory = environment['memory']
   prepare_csv_timings_file(problem_number)
   append_data_to_csv_timings_file(problem_number = problem_number,language = 'Python', language_version=f'{py_v.major}.{py_v.minor}.{py_v.micro}',input=arg,time=timing['finish'] - timing['start'],operating_system=operating_system,os_release=os_release,os_version=os_version,machine=machine,processor=processor,cpu_freq=cpu_freq,memory=memory,timestamp=timing['start'])
 
