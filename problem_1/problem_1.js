@@ -1,3 +1,5 @@
+const { fullPrint } = require("../js_functions");
+
 const euler_1 = n => {
     let result = 0,
     x = n/3,
@@ -15,3 +17,5 @@ const euler_1 = n => {
 
     return result;
 };
+
+fullPrint("Challenge",euler_1,1000);
