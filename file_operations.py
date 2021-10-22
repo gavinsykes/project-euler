@@ -143,13 +143,6 @@ def main():
         language_version = args.language_version,
         input            = args.input,
         time             = args.time,
-        operating_system = args.operating_system,
-        os_release       = args.os_release,
-        os_version       = args.os_version,
-        machine          = args.machine,
-        processor        = args.processor,
-        cpu_freq         = args.cpu_freq,
-        memory           = args.memory,
         timestamp        = args.timestamp
       )
   return None
