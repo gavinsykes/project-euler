@@ -7,23 +7,6 @@ zeroth_post_date = datetime.datetime(2018,12,30,15,0,0)
 workingdirectory = os.getcwd()
 this_directory = os.path.dirname(__file__)
 
-parser = argparse.ArgumentParser(description = 'This file contains all of the necessary file operations to keep this repository operating.')
-parser.add_argument('-c', '--csv', action = "store_true", help = 'Set this option to tell the program you are updating the CSV')
-parser.add_argument('-n', '--problem_number', type = int, help = 'The number of the problem that you wish to update')
-parser.add_argument('-f', '--cpu_freq', type = int, help = 'The frequency of the CPU in MHz')
-parser.add_argument('-i', '--input', type = int, help = 'The input provided to the function for solving the problem')
-parser.add_argument('-l', '--language', help = 'The language the problem has been completed in')
-parser.add_argument('-g', '--language_version', help = 'The version of the language')
-parser.add_argument('-a', '--machine', help = 'The machine')
-parser.add_argument('-m', '--memory', type = int, help = 'The available memory of the workstation in B')
-parser.add_argument('-o', '--operating_system', help = 'The operating system')
-parser.add_argument('-r', '--os_release', help = 'The release of the operating system')
-parser.add_argument('-v', '--os_version', help = 'The version of the operating system')
-parser.add_argument('-p', '--processor', help = 'The processor')
-parser.add_argument('-t', '--time', type = float, help = 'The time taken to solve the problem')
-parser.add_argument('-s', '--timestamp', type = float, help = 'The time that the function was run')
-args = parser.parse_args()
-
 def csv_timings_file_exists(problem_number: int) -> bool:
   return file_exists(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv')
 
@@ -143,6 +126,15 @@ def get_markdown_file_contents(problem_number):
     return contents
 
 def main():
+  parser = argparse.ArgumentParser(description = 'This file contains all of the necessary file operations to keep this repository operating.')
+  parser.add_argument('-c', '--csv', action = "store_true", help = 'Set this option to tell the program you are updating the CSV')
+  parser.add_argument('-n', '--problem_number', type = int, help = 'The number of the problem that you wish to update')
+  parser.add_argument('-i', '--input', type = int, help = 'The input provided to the function for solving the problem')
+  parser.add_argument('-l', '--language', help = 'The language the problem has been completed in')
+  parser.add_argument('-g', '--language_version', help = 'The version of the language')
+  parser.add_argument('-t', '--time', type = float, help = 'The time taken to solve the problem')
+  parser.add_argument('-s', '--timestamp', type = float, help = 'The time that the function was run')
+  args = parser.parse_args()
   if args.csv:
     if None not in vars(args).values():
       append_data_to_csv_timings_file(
