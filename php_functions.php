@@ -39,13 +39,6 @@ function full_print(string $challenge,$fun,int $arg): void {
         "release" => PHP_RELEASE_VERSION
     ];
     $php_version_as_string = implode(".",$php_version);
-    $operating_system = $environment["os"];
-    $os_release = $environment['os_release'];
-    $os_version = $environment['os_version'];
-    $machine = $environment['machine'];
-    $processor = $environment['processor'];
-    $cpu_freq = $environment['cpu_freq'];
-    $memory = $environment['memory'];
     exec("python3 ./file_operations.py --csv -l=PHP -g=$php_version_as_string -n=$problem_number -i=$arg -t=$time_taken -s=$timestamp", $output, $retval);
 }
 
