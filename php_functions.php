@@ -8,8 +8,13 @@ define("CLI", defined("STDIN")
 );
 
 function full_print(string $challenge,$fun,int $arg): void {
-    $file_path = explode("/",debug_backtrace()[0]["file"]);
-    $problem_number = explode(".",explode("_",$file_path[count($file_path) - 1])[2])[0];
+    $file_path = preg_split("/\\\\|\//",debug_backtrace()[0]["file"]);
+    var_dump($file_path);
+    var_dump($file_path[count($file_path) - 1]);
+    var_dump(explode("_",$file_path[count($file_path) - 1])[1]);
+    var_dump(explode(".",explode("_",$file_path[count($file_path) - 1])[1]));
+    $problem_number = explode(".",explode("_",$file_path[count($file_path) - 1])[1])[0];
+    echo $problem_number;
     $timing = [
         "start"  => microtime(true),
         "finish" => NULL
