@@ -27,12 +27,6 @@ function full_print(string $challenge,$fun,int $arg): void {
     echo sprintf("Result: %s",$result) . PHP_EOL;
     echo sprintf("End time: %s",$timing["finish"]) . PHP_EOL;
     echo sprintf("This returns %s in %s seconds!",$result,$timing["finish"] - $timing["start"]) . PHP_EOL;
-    try {
-        $env_file = file_get_contents("env_info.json");
-        $environment = json_decode($env_file, true);
-    } catch (Exception $error) {
-        throw new \Exception("\x1b[1;31m" . "Environment info JSON file not found, it should be in root and be called \"env_info.json\". Try running \"python3 get_env.py\" first." . "\x1b[0m");
-    }
     $php_version = [
         "major"   => PHP_MAJOR_VERSION,
         "minor"   => PHP_MINOR_VERSION,
