@@ -9,7 +9,7 @@ const euler_1 = n => {
         result += i*3;
     }
 
-    for (let i = 1; i < x; i++) {
+    for (let i = 1; i < y; i++) {
         if (5*i % 3 != 0) {
             result += i*5;
         }
