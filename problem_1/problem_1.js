@@ -1,4 +1,4 @@
-const { fullPrint } = require("../js_functions");
+import { fullPrint } from '../js_functions';
 
 export const euler_1 = n => {
     let result = 0,

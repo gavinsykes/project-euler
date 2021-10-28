@@ -3,7 +3,7 @@ import 'mocha';
 const fs = require('fs');
 
 const answers = JSON.parse(fs.readFileSync('problem_1_expected_answers.json'));
-import { euler_1 } from './problem_1';
+import { euler_1 } from './problem_1.js';
 
 answers.forEach((answer) => {
     describe(`Input: ${answer.input}`, () => {
