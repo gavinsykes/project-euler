@@ -1,6 +1,6 @@
 const { fullPrint } = require("../js_functions");
 
-const euler_1 = n => {
+export const euler_1 = n => {
     let result = 0,
     x = n/3,
     y = n/5
