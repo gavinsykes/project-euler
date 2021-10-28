@@ -2,6 +2,7 @@ __pycache__
 github_credentials.json
 wp_credentials.json
 env_info.json
+.node_modules
 
 *.class
 COMPILED*
