@@ -32,13 +32,8 @@ function full_print(string $challenge,$fun,int $arg): void {
     echo sprintf("Result: %s",$result) . PHP_EOL;
     echo sprintf("End time: %s",$timing["finish"]) . PHP_EOL;
     echo sprintf("This returns %s in %s seconds!",$result,$timing["finish"] - $timing["start"]) . PHP_EOL;
-    $php_version = [
-        "major"   => PHP_MAJOR_VERSION,
-        "minor"   => PHP_MINOR_VERSION,
-        "release" => PHP_RELEASE_VERSION
-    ];
-    $php_version_as_string = implode(".",$php_version);
-    exec("python3 ./file_operations.py --csv -l=PHP -g=$php_version_as_string -n=$problem_number -i=$arg -t=$time_taken -s=$timestamp", $output, $retval);
+    $php_version = PHP_VERSION;
+    exec("python3 ./file_operations.py --csv -l=PHP -g=$php_version -n=$problem_number -i=$arg -t=$time_taken -s=$timestamp", $output, $retval);
 }
 
 function is_even(int $n) {
