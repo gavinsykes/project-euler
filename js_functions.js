@@ -51,12 +51,12 @@ const fullPrint = (challenge,fun,argument) => {
   exec(`python3 ./file_operations.py --csv -l=JavaScript -g=${node_v[0]}.${node_v[1]}.${node_v[2]} -n=${problem_number} -i=${argument} -t=${timing.finish - timing.start} -s=${timing.start}`);
 }
   
-  module.exports = {
-    fullPrint: fullPrint,
-    isEven: isEven,
-    isOdd: isOdd,
-    isPalindrome: isPalindrome,
-    isPrime: isPrime,
-    isPythagoreanTriple: isPythagoreanTriple,
-    productOfArray: productOfArray
-  };
+module.exports = {
+  fullPrint: fullPrint,
+  isEven: isEven,
+  isOdd: isOdd,
+  isPalindrome: isPalindrome,
+  isPrime: isPrime,
+  isPythagoreanTriple: isPythagoreanTriple,
+  productOfArray: productOfArray
+};
