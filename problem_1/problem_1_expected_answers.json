@@ -78,5 +78,85 @@
     {
         "input": 20,
         "expected_answer": 78
+    },
+    {
+        "input": 21,
+        "expected_answer": 98
+    },
+    {
+        "input": 22,
+        "expected_answer": 119
+    },
+    {
+        "input": 23,
+        "expected_answer": 119
+    },
+    {
+        "input": 24,
+        "expected_answer": 119
+    },
+    {
+        "input": 25,
+        "expected_answer": 143
+    },
+    {
+        "input": 26,
+        "expected_answer": 168
+    },
+    {
+        "input": 27,
+        "expected_answer": 168
+    },
+    {
+        "input": 28,
+        "expected_answer": 195
+    },
+    {
+        "input": 29,
+        "expected_answer": 195
+    },
+    {
+        "input": 30,
+        "expected_answer": 195
+    },
+    {
+        "input": 31,
+        "expected_answer": 225
+    },
+    {
+        "input": 32,
+        "expected_answer": 225
+    },
+    {
+        "input": 33,
+        "expected_answer": 225
+    },
+    {
+        "input": 34,
+        "expected_answer": 258
+    },
+    {
+        "input": 35,
+        "expected_answer": 258
+    },
+    {
+        "input": 36,
+        "expected_answer": 293
+    },
+    {
+        "input": 37,
+        "expected_answer": 329
+    },
+    {
+        "input": 38,
+        "expected_answer": 329
+    },
+    {
+        "input": 39,
+        "expected_answer": 329
+    },
+    {
+        "input": 40,
+        "expected_answer": 368
     }
 ]
