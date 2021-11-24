@@ -13,6 +13,7 @@ def get_credentials():
         creds=json_file.read()
 
     credentials = json.loads(creds)
+    json_file.close()
     return credentials
 
 credentials = get_credentials()
