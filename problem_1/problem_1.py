@@ -23,17 +23,13 @@ def euler_1(n):
   result = 0
   x = n/3
   y = n/5
-  print(f'{n} divided by 3 is {x}')
-  print(f'{n} divided by 5 is {y}')
 
   for i in range (1,ceil(x)):
     result += 3*i
-    print(f'Adding {3*i} to the total, result is now {result}')
 
   for i in range (1,ceil(y)):
     if (5*i % 3 != 0):
       result += 5*i
-      print(f'Adding {5*i} to the total, result is now {result}')
 
   return result
 
