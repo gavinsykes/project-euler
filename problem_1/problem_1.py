@@ -19,17 +19,26 @@ if (not isinstance(x,int)):
   raise Exception(f'\033[1;31mYou entered {x}, which is not an integer, please try a positive integer.\033[0m')
 
 def euler_1(n):
+  from math import ceil
   result = 0
   x = n/3
   y = n/5
+  print(f'{n} divided by 3 is {x}')
+  print(f'{n} divided by 5 is {y}')
 
-  for i in range (1,int(x)):
+  for i in range (1,ceil(x)):
     result += 3*i
+    print(f'Adding {3*i} to the total, result is now {result}')
 
-  for i in range (1,int(y)):
+  for i in range (1,ceil(y)):
     if (5*i % 3 != 0):
       result += 5*i
+      print(f'Adding {5*i} to the total, result is now {result}')
 
   return result
 
-pyfuncs.fullprint(challenge,euler_1,x,__file__)
+def main():
+  pyfuncs.fullprint(challenge,euler_1,x,__file__)
+
+if __name__ == '__main__':
+  main()
