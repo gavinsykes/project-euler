@@ -38,5 +38,45 @@
     {
         "input": 10,
         "expected_answer": 23
+    },
+    {
+        "input": 11,
+        "expected_answer": 33
+    },
+    {
+        "input": 12,
+        "expected_answer": 33
+    },
+    {
+        "input": 13,
+        "expected_answer": 45
+    },
+    {
+        "input": 14,
+        "expected_answer": 45
+    },
+    {
+        "input": 15,
+        "expected_answer": 45
+    },
+    {
+        "input": 16,
+        "expected_answer": 60
+    },
+    {
+        "input": 17,
+        "expected_answer": 60
+    },
+    {
+        "input": 18,
+        "expected_answer": 60
+    },
+    {
+        "input": 19,
+        "expected_answer": 78
+    },
+    {
+        "input": 20,
+        "expected_answer": 78
     }
 ]
