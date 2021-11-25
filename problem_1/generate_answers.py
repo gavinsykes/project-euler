@@ -9,7 +9,6 @@ def main():
     expected_answers_file.close()
   for i in range(41,1001):
     current_expected_answers.append({'input':i,'expected_answer':euler_function(i)})
-    print(dumps(current_expected_answers))
   with open(path.dirname(__file__) + '/problem_1_expected_answers.json','w') as updated_answers_file:
     updated_answers_file.write(dumps(current_expected_answers))
     updated_answers_file.close()
