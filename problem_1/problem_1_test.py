@@ -31,7 +31,7 @@ def main():
   if len(failed_tests) > 0:
     print(f"\033[1;31mFailed tests: {len(failed_tests)} ({len(failed_tests) * 100 / total_tests}%)\033[0m")
     for test in failed_tests:
-      print(f"\033[1;31mInput {test['input']} should have yielded {test['expected_answer']} but yields {test['actual_answer']}\033[0m")
+      print(f"\033[1;31mInput of {test['input']} should have yielded {test['expected_answer']} but yields {test['actual_answer']}\033[0m")
 
 if __name__ == '__main__':
   main()
