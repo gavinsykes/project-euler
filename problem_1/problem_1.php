@@ -42,5 +42,7 @@ if (CLI) {
     $val = $_REQUEST['val'];
 }
 
-full_print("Challenge","euler_1",$val);
+if (realpath(__FILE__) === realpath($argv[0])) {
+    full_print("Challenge","euler_1",$val);
+}
 ?>
