@@ -9,13 +9,13 @@ const failedTests = [];
 expectedAnswers.forEach((expectedAnswer) => {
     console.log(`Input of ${expectedAnswer.input} should yield ${expectedAnswer.expected_answer}`);
     let success = false;
-    let formatCharacter = "\033[1;31m";
-    const closingFormatCharacter = "\033[0m";
+    let formatCharacter = "\x1b[1;31m";
+    const closingFormatCharacter = "\x1b[0m";
     let answer = euler_1(expectedAnswer.input);
     if (answer === expectedAnswer.expected_answer) {
         succesfulTests++;
         success = true;
-        formatCharacter = "\033[1;32m";
+        formatCharacter = "\x1b[1;32m";
     } else {
         failedTests.push({
             'input': expectedAnswer.input,
@@ -27,11 +27,11 @@ expectedAnswers.forEach((expectedAnswer) => {
 });
 
 const totalTests = successfulTests + failedTests.length;
-console.log(`\033[1mTotal tests: ${totalTests}\033[0m`);
-console.log(`\033[1;32mSuccessful tests: ${successfulTests} (${successfulTests * 100 / totalTests}%)\033[0m`);
+console.log(`\x1b[1mTotal tests: ${totalTests}\x1b[0m`);
+console.log(`\x1b[1;32mSuccessful tests: ${successfulTests} (${successfulTests * 100 / totalTests}%)\x1b[0m`);
 if (failedTests.length > 0) {
-    console.log(`\033[1;31mFailed tests: ${failedTests.length} (${failedTests.length * 100 / totalTests}%)\033[0m`);
+    console.log(`\x1b[1;31mFailed tests: ${failedTests.length} (${failedTests.length * 100 / totalTests}%)\x1b[0m`);
     failedTests.forEach((test) => {
-        console.log(`\033[1;31mInput of ${test.input} should have yielded ${test.expectedAnswer} but yields ${test.actualAnswer}\033[0m]`);
+        console.log(`\x1b[1;31mInput of ${test.input} should have yielded ${test.expectedAnswer} but yields ${test.actualAnswer}\x1b[0m]`);
     });
 }
