@@ -1,6 +1,6 @@
-const fs = require('fs');
+import { readFileSync } from 'fs';
 
-const expectedAnswers = JSON.parse(fs.readFileSync('problem_1_expected_answers.json'));
+const expectedAnswers = JSON.parse(readFileSync('problem_1/problem_1_expected_answers.json', 'utf8'));
 import { euler_1 } from './problem_1.js';
 
 let successfulTests = 0;
@@ -11,9 +11,9 @@ expectedAnswers.forEach((expectedAnswer) => {
     let success = false;
     let formatCharacter = "\x1b[1;31m";
     const closingFormatCharacter = "\x1b[0m";
-    let answer = euler_1(expectedAnswer.input);
+    const answer = euler_1(expectedAnswer.input);
     if (answer === expectedAnswer.expected_answer) {
-        succesfulTests++;
+        successfulTests++;
         success = true;
         formatCharacter = "\x1b[1;32m";
     } else {
@@ -32,6 +32,6 @@ console.log(`\x1b[1;32mSuccessful tests: ${successfulTests} (${successfulTests *
 if (failedTests.length > 0) {
     console.log(`\x1b[1;31mFailed tests: ${failedTests.length} (${failedTests.length * 100 / totalTests}%)\x1b[0m`);
     failedTests.forEach((test) => {
-        console.log(`\x1b[1;31mInput of ${test.input} should have yielded ${test.expectedAnswer} but yields ${test.actualAnswer}\x1b[0m]`);
+        console.log(`\x1b[1;31mInput of ${test.input} should have yielded ${test.expectedAnswer} but yields ${test.actualAnswer}\x1b[0m`);
     });
 }

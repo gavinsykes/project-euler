@@ -1,4 +1,4 @@
-import { fullPrint } from '../js_functions';
+import { fullPrint } from '../js_functions.cjs';
 
 export const euler_1 = n => {
     let result = 0,
@@ -18,4 +18,6 @@ export const euler_1 = n => {
     return result;
 };
 
-fullPrint("Challenge",euler_1,1000);
+if (typeof require !== 'undefined' && require.main === module) {
+    fullPrint("Challenge",euler_1,1000);
+}
