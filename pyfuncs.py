@@ -1,6 +1,6 @@
 from typing import Callable
 
-def fullprint(challenge: str,fun: Callable,arg,filepath: str) -> None:
+def fullprint(challenge: str,fun: Callable,arg) -> None:
   import inspect
   problem_number = inspect.stack()[1][1].split('_')[-1].split('.')[0]
   import time
