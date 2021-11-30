@@ -1,13 +1,14 @@
-import argparse
-import sys
-import os
+from argparse import ArgumentParser
+from sys import path as syspath
+from os import path
 
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+syspath.append(path.dirname(path.dirname(__file__)))
 import pyfuncs
 
+problem_number = path.basename(__file__).split('.')[0].split('_')[-1]
 challenge = 'Find the sum of all the multiples of 3 or 5 below {}:'
 
-parser = argparse.ArgumentParser(description = 'Find the sum of all the multiples of 3 or 5 below a given number.')
+parser = ArgumentParser(description = 'Find the sum of all the multiples of 3 or 5 below a given number.')
 parser.add_argument('--num', default = 1000, type = int, help = 'Insert the number here, it must be a positive integer. It defaults to 1000 to correspond with the Project Euler Problem at https://projecteuler.net/problem=1')
 x = parser.parse_args().num
 
@@ -34,7 +35,18 @@ def euler_1(n):
   return result
 
 def main():
-  pyfuncs.fullprint(challenge,euler_1,x,__file__)
+  from json import loads
+  with open(path.dirname(__file__) + '/problem_1_expected_answers.json','r') as expected_answers_file:
+    expected_answers_data = expected_answers_file.read()
+    expected_answers = loads(expected_answers_data)
+    expected_answers_file.close()
+  try:
+    expected_answer = list(filter(lambda answer: answer["input"] == x, expected_answers))[0]["expected_answer"]
+    if euler_1(x) == expected_answer:
+      pyfuncs.fullprint(challenge,euler_1,x)
+  except:
+    print('\033[1;33mWARNING: this input has not yet been given an expected answer, please consider giving it one\033[0m')
+    pyfuncs.fullprint(challenge,euler_1,x)
 
 if __name__ == '__main__':
   main()
