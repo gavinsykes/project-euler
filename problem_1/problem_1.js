@@ -18,6 +18,6 @@ export const euler_1 = n => {
     return result;
 };
 
-if (typeof require !== 'undefined' && require.main === module) {
+if (!process.argv[1].match(/test/)) {
     fullPrint("Challenge",euler_1,1000);
 }
