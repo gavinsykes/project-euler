@@ -1,12 +1,4 @@
 from argparse import ArgumentParser
-from sys import path as syspath
-from os import path
-
-syspath.append(path.dirname(path.dirname(__file__)))
-import pyfuncs
-
-problem_number = path.basename(__file__).split('.')[0].split('_')[-1]
-challenge = 'Find the sum of all the multiples of 3 or 5 below {}:'
 
 parser = ArgumentParser(description = 'Find the sum of all the multiples of 3 or 5 below a given number.')
 parser.add_argument('--num', default = 1000, type = int, help = 'Insert the number here, it must be a positive integer. It defaults to 1000 to correspond with the Project Euler Problem at https://projecteuler.net/problem=1')
@@ -35,8 +27,16 @@ def euler_1(n):
   return result
 
 def main():
+  from sys import path as syspath
+  from os import path
+
+  syspath.append(path.dirname(path.dirname(__file__)))
+  import pyfuncs
+
+  problem_number = path.basename(__file__).split('.')[0].split('_')[-1]
+  challenge = f'Find the sum of all the multiples of 3 or 5 below {x}:'
   from json import loads
-  with open(path.dirname(__file__) + '/problem_1_expected_answers.json','r') as expected_answers_file:
+  with open(path.dirname(__file__) + f'/problem_{problem_number}_expected_answers.json','r') as expected_answers_file:
     expected_answers_data = expected_answers_file.read()
     expected_answers = loads(expected_answers_data)
     expected_answers_file.close()
