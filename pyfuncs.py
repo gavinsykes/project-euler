@@ -35,18 +35,32 @@ def is_even(n: int) -> bool:
 def is_odd(n: int) -> bool:
   return n & 1
 
+def divisible_by_5(n: int) -> bool:
+  return str(n)[-1] == '5' or str(n)[-1] == '0'
+
 def is_palindrome(s) -> bool:
   if(str(s) == str(s)[::-1]):
     return True
 
 def is_prime(n: int) -> bool:
   import math
-  if (n < 1 or (not isinstance(n,int))):
-    return None
-
-  if((is_even(n) and n != 2) or (n % 3 == 0) or (str(n)[-1:] == '5') or (str(n)[-1:] == '0')):
+  # Let's eliminate conditions where we can immediately see that n is not prime
+  if (# n is less than 1
+      n < 1 or
+      # n isn't an integer
+      not isinstance(n,int) or
+      # n is even (unless it's 2, the only even prime number)
+      (is_even(n) and n != 2) or
+      # n divides by 3 (not very computationally expensive, at least I don't think so)
+      n % 3 == 0 or
+      # n divides by 5
+      divisible_by_5(n)):
     return False
 
+  # Okay so none of those conditions have been met but that doesn't mean it isn't prime
+  # 7 is a great example of being prime but not meeting any of those conditions
+  # Now for the computationally expensive bit, whittled down as much as I can
+  # See at this point, only numbers that end with 1, 3, 7 or 9 can possibly be prime
   for i in range(1,int(math.floor(n/6)),1):
     if(n % (6 * i - 1) == 0 or n % (6 * i + 1) == 0):
       return False
