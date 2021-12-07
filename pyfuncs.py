@@ -52,18 +52,33 @@ def is_prime(n: int) -> bool:
       # n is even (unless it's 2, the only even prime number)
       (is_even(n) and n != 2) or
       # n divides by 3 (not very computationally expensive, at least I don't think so)
-      n % 3 == 0 or
+      # Remember this doesn't actually include 3!
+      (n % 3 == 0 and n != 3) or
       # n divides by 5
-      divisible_by_5(n)):
+      # Nor does this include 5 itself!
+      (divisible_by_5(n) and n != 5)):
+    print(f'{n} met one of the basic conditions, not prime')
     return False
 
-  # Okay so none of those conditions have been met but that doesn't mean it isn't prime
-  # 7 is a great example of being prime but not meeting any of those conditions
-  # Now for the computationally expensive bit, whittled down as much as I can
-  # See at this point, only numbers that end with 1, 3, 7 or 9 can possibly be prime
-  for i in range(1,int(math.floor(n/6)),1):
-    if(n % (6 * i - 1) == 0 or n % (6 * i + 1) == 0):
+  # Okay so none of those conditions have been met but that doesn't mean it isn't prime.
+  # 7 is a great example of being prime but not meeting any of those conditions.
+  # Now for the computationally expensive bit, whittled down as much as I can.
+  # See at this point, only numbers that end with 1, 3, 7 or 9 can possibly be prime.
+  # We have already eliminated 1, 3, and 5, so we have to start at 7 and pick up every odd number
+  # Mathematically, with m starting at 1, that is 2m+5 where 2m+5 < n meaning m < (n-5)/2
+  # We also need to take out every 5th iteration of m, as they will be multiples of 5 which we have already handled
+  m = 1
+  c5 = 1
+  while m < (n-5)/2:
+    # If we are on a 5th number, set the "multiple of 5 counter" back to 1 and skip this loop
+    if c5 == 5:
+      c5 = 1
+      continue
+    if (n % (2*m + 5) == 0):
+      print(f'{n} divides by {2*m + 5}, not prime')
       return False
+    m+=1
+    c5+=1
 
   return True
 
@@ -80,3 +95,7 @@ def is_pythagorean_triple(a: int,b: int,c: int) -> bool:
   if (a_squared + b_squared == c_squared or a_squared + c_squared == b_squared or b_squared + c_squared == a_squared):
     return True
   return False
+
+if __name__ == '__main__':
+  for i in range(1,1000):
+    print(f'{i}: {is_prime(i)}')
