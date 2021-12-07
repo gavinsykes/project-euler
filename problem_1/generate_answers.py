@@ -1,6 +1,9 @@
 from json import loads, dumps
 from os import path
-from problem_1 import euler_1 as euler_function
+
+problem_number = path.basename(__file__).split('.')[0].split('_')[-2]
+_import = __import__(f'problem_{problem_number}', globals(), locals(), [f'euler_{problem_number}'], 0)
+euler_function = _import.__dict__[f'euler_{problem_number}']
 
 def main():
   with open(path.dirname(__file__) + '/problem_1_expected_answers.json','r') as expected_answers_file:
