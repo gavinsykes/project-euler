@@ -38,7 +38,7 @@ def is_odd(n: int) -> bool:
 def divisible_by_5(n: int) -> bool:
   return str(n)[-1] == '5' or str(n)[-1] == '0'
 
-def is_palindrome(s) -> bool:
+def is_palindrome(s: any) -> bool:
   if(str(s) == str(s)[::-1]):
     return True
 
