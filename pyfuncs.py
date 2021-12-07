@@ -75,7 +75,6 @@ def is_prime(n: int) -> bool:
       c5 = 1
       continue
     if (n % (2*m + 5) == 0):
-      print(f'{n} divides by {2*m + 5}, not prime')
       return False
     m+=1
     c5+=1
