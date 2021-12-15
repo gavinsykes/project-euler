@@ -7,12 +7,12 @@ def fullprint(challenge: str,fun: Callable,arg) -> None:
   import sys
   from file_operations import prepare_csv_timings_file, append_data_to_csv_timings_file
   timing = {}
-  timing['start'] = time.time()
+  timing['start'] = time.perf_counter()
   if arg:
     result = fun(arg)
   else:
     result = fun()
-  timing['finish'] = time.time()
+  timing['finish'] = time.perf_counter()
   print(challenge.format(arg))
   print(f'Start time: {timing["start"]}')
   print(f'Result: {result}')
