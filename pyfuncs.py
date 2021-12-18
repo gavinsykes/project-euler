@@ -2,10 +2,11 @@ from typing import Callable
 
 def fullprint(challenge: str,fun: Callable,arg) -> None:
   import inspect
-  problem_number = inspect.stack()[1][1].split('_')[-1].split('.')[0]
   import time
   import sys
   from file_operations import prepare_csv_timings_file, append_data_to_csv_timings_file
+  
+  problem_number = inspect.stack()[1][1].split('_')[-1].split('.')[0]
   timing = {}
   timing['start'] = time.perf_counter()
   if arg:
@@ -96,5 +97,4 @@ def is_pythagorean_triple(a: int,b: int,c: int) -> bool:
   return False
 
 if __name__ == '__main__':
-  for i in range(1,1000):
-    print(f'{i}: {is_prime(i)}')
+  pass
