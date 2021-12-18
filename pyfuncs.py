@@ -1,11 +1,22 @@
 from typing import Callable
 
+def check_correct_answer(problem_number: int, input: int, fun: Callable) -> bool:
+  from json import loads
+  with open(f'problem_{problem_number}/problem_{problem_number}_expected_answers.json','r') as expected_answers_file:
+    expected_answers_data = expected_answers_file.read()
+    expected_answers = loads(expected_answers_data)
+  try:
+    expected_answer = list(filter(lambda answer: answer["input"] == input, expected_answers))[0]["expected_answer"]
+  except IndexError:
+    return None
+  return expected_answer == fun(input)
+
 def fullprint(challenge: str,fun: Callable,arg) -> None:
   import inspect
   import time
   import sys
   from file_operations import prepare_csv_timings_file, append_data_to_csv_timings_file
-  
+
   problem_number = inspect.stack()[1][1].split('_')[-1].split('.')[0]
   timing = {}
   timing['start'] = time.perf_counter()
@@ -19,16 +30,25 @@ def fullprint(challenge: str,fun: Callable,arg) -> None:
   print(f'Result: {result}')
   print(f'End time: {timing["finish"]}')
   print(f'This returns {result} in {timing["finish"]-timing["start"]} seconds!')
-  py_v = sys.version_info
-  prepare_csv_timings_file(problem_number)
-  append_data_to_csv_timings_file(
-    problem_number = problem_number,
-    language = 'Python', 
-    language_version=f'{py_v.major}.{py_v.minor}.{py_v.micro}',
-    input=arg,
-    time=timing['finish'] - timing['start'],
-    timestamp=timing['start']
-  )
+  if check_correct_answer(problem_number, arg, fun) is None:
+    print('\033[1;33mWARNING: this input has not yet been given an expected answer, please consider giving it one.')
+    print('For now I will avoid adding the answer to the CSV. Exiting...\033[0m')
+    return
+  if check_correct_answer(problem_number, arg, fun):
+    print('\033[1;32mAnswer appears to be correct, adding data to the CSV...')
+    py_v = sys.version_info
+    prepare_csv_timings_file(problem_number)
+    append_data_to_csv_timings_file(
+      problem_number = problem_number,
+      language = 'Python', 
+      language_version=f'{py_v.major}.{py_v.minor}.{py_v.micro}',
+      input=arg,
+      time=timing['finish'] - timing['start'],
+      timestamp=timing['start']
+    )
+    print('Exiting...\033[0m')
+  else:
+    print(f'\033[1;31mERROR: Answer appears to be wrong, {result} given. Exiting...\033[0m')
 
 def is_even(n: int) -> bool:
   return not(n & 1)
@@ -97,4 +117,4 @@ def is_pythagorean_triple(a: int,b: int,c: int) -> bool:
   return False
 
 if __name__ == '__main__':
-  pass
+  print(check_correct_answer(1,1001))
