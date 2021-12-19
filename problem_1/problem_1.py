@@ -32,7 +32,7 @@ def main():
 
   syspath.append(path.dirname(path.dirname(__file__)))
   from pyfuncs import fullprint
-  
+
   challenge = f'Find the sum of all the multiples of 3 or 5 below {x}:'
   fullprint(challenge,euler_1,x)
 
