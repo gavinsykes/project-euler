@@ -1,17 +1,21 @@
-import platform
-import json
+from platform import uname
+from json import dumps
 
 try:
-  import psutil
+  from psutil import cpu_freq, cpu_count, virtual_memory
 except:
   raise Exception("\x1b[1;31mpsutil isn't installed yet. You should be able to run \"pip3 install psutil\" to install it.\x1b[0m")
 
-uname = platform.uname()
-cpu = psutil.cpu_freq()
-cores = psutil.cpu_count()
-mem = psutil.virtual_memory()
+def main():
+  u_name = uname()
+  cpu = cpu_freq()
+  cores = cpu_count()
+  mem = virtual_memory()
 
-environment = {'os':uname.system,'os_release':uname.release,'os_version':uname.version,'machine':uname.machine,'processor':uname.processor,'cpu_freq':cpu.current,'memory':mem.total}
+  environment = {'os':u_name.system,'os_release':u_name.release,'os_version':u_name.version,'machine':u_name.machine,'processor':u_name.processor,'cpu_freq':cpu.current,'memory':mem.total}
 
-with open('env_info.json','w') as env_file:
-  env_file.write(json.dumps(environment))
+  with open('env_info.json','w') as env_file:
+    env_file.write(dumps(environment))
+
+if __name__ == '__main__':
+  main()
