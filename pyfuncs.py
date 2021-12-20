@@ -19,6 +19,7 @@ def fullprint(challenge: str,fun: Callable,arg) -> None:
 
   problem_number = inspect.stack()[1][1].split('_')[-1].split('.')[0]
   timing = {}
+  timestamp = time.time()
   timing['start'] = time.perf_counter()
   if arg:
     result = fun(arg)
@@ -26,9 +27,6 @@ def fullprint(challenge: str,fun: Callable,arg) -> None:
     result = fun()
   timing['finish'] = time.perf_counter()
   print(challenge.format(arg))
-  print(f'Start time: {timing["start"]}')
-  print(f'Result: {result}')
-  print(f'End time: {timing["finish"]}')
   print(f'This returns {result} in {timing["finish"]-timing["start"]} seconds!')
   if check_correct_answer(problem_number, arg, fun) is None:
     print('\033[1;33mWARNING: this input has not yet been given an expected answer, please consider giving it one.')
@@ -44,7 +42,7 @@ def fullprint(challenge: str,fun: Callable,arg) -> None:
       language_version=f'{py_v.major}.{py_v.minor}.{py_v.micro}',
       input=arg,
       time=timing['finish'] - timing['start'],
-      timestamp=timing['start']
+      timestamp=timestamp
     )
     print('Exiting...\033[0m')
   else:
