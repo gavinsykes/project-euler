@@ -16,8 +16,8 @@ languages = [
   'TypeScript'
 ]
 
-import requests
-import json
+from requests import get
+from json import dumps
 
 # Make sure you get the raw URLs, not the URLs of the pages Git shows you!
 
@@ -26,9 +26,9 @@ backup_language_gist_url = "https://gist.githubusercontent.com/aymen-mouelhi/82c
 
 def main():
   try:
-    r = requests.get(language_gist_url).json()
+    r = get(language_gist_url).json()
   except:
-    r = requests.get(backup_language_gist_url).json()
+    r = get(backup_language_gist_url).json()
     
   extensions = [l for l in r if l['name'] in languages]
 
@@ -45,7 +45,7 @@ def main():
     e['main'] = inp
 
   with open('languages.json','w') as language_json:
-    language_json.write(json.dumps(extensions))
+    language_json.write(dumps(extensions))
 
 if __name__ == '__main__':
   main()
