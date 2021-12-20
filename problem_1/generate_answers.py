@@ -15,12 +15,10 @@ def main():
   with open(path.dirname(__file__) + f'/problem_{problem_number}_expected_answers.json','r') as expected_answers_file:
     current_expected_answers_data = expected_answers_file.read()
     current_expected_answers = loads(current_expected_answers_data)
-    expected_answers_file.close()
   for i in range(1001,10001):
     current_expected_answers.append({'input':i,'expected_answer':euler_function(i)})
   with open(path.dirname(__file__) + f'/problem_{problem_number}_expected_answers.json','w') as updated_answers_file:
     updated_answers_file.write(dumps(current_expected_answers))
-    updated_answers_file.close()
 
 if __name__ == '__main__':
   main()

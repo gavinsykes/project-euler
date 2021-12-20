@@ -18,9 +18,7 @@ def csv_timings_file_prepared(problem_number: int) -> bool:
     reader = csv.reader(csv_file)
     row1 = next(reader)
     if row1[0] == 'language':
-      csv_file.close()
       return True
-    csv_file.close()
     return False
 
 def csv_timings_file_is_empty(problem_number: int) -> bool:
@@ -37,7 +35,6 @@ def prepare_csv_timings_file(problem_number: int) -> None:
   with open(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv', 'w', newline='') as csv_file:
       writer = csv.writer(csv_file, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
       writer.writerow(['language', 'language_version', 'input', 'time', 'os', 'os_release', 'os_version', 'machine', 'processor', 'cpu_freq', 'memory', 'timestamp'])
-      csv_file.close()
 
 def append_data_to_csv_timings_file(
   problem_number: int,
@@ -67,7 +64,6 @@ def append_data_to_csv_timings_file(
   with open(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv', 'a', newline='') as csv_file:
       writer = csv.writer(csv_file, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
       writer.writerow([language,language_version,input,time,operating_system,os_release,os_version,machine,processor,cpu_freq,memory,timestamp])
-      csv_file.close()
 
 with open('languages.json', 'r') as im:
   langs=im.read()

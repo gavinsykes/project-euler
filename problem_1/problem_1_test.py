@@ -9,7 +9,6 @@ def main():
   with open(path.dirname(__file__) + f'/problem_{problem_number}_expected_answers.json','r') as expected_answers_file:
     expected_answers_data = expected_answers_file.read()
     expected_answers = loads(expected_answers_data)
-    expected_answers_file.close()
 
   successful_tests = 0
   failed_tests = []
