@@ -1,28 +1,28 @@
-import os
-import datetime
-import json
-import argparse
+from os import chdir, getcwd, path, stat
+from datetime import datetime
+from json import loads
+from argparse import ArgumentParser
+from csv import reader as csv_reader, writer as csv_writer, QUOTE_MINIMAL
 
-zeroth_post_date = datetime.datetime(2018,12,30,15,0,0)
-workingdirectory = os.getcwd()
-this_directory = os.path.dirname(__file__)
+zeroth_post_date = datetime(2018,12,30,15,0,0)
+workingdirectory = getcwd()
+this_directory = path.dirname(__file__)
 
 def csv_timings_file_exists(problem_number: int) -> bool:
-  return file_exists(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv')
+  return file_exists(this_directory + f'/problem_{problem_number}/problem_{problem_number}_timings.csv')
 
 def csv_timings_file_prepared(problem_number: int) -> bool:
   if not csv_timings_file_exists(problem_number):
     return False
-  import csv
-  with open(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv', newline='') as csv_file:
-    reader = csv.reader(csv_file)
+  with open(this_directory + f'/problem_{problem_number}/problem_{problem_number}_timings.csv', newline='') as csv_file:
+    reader = csv_reader(csv_file)
     row1 = next(reader)
     if row1[0] == 'language':
       return True
     return False
 
 def csv_timings_file_is_empty(problem_number: int) -> bool:
-  return file_is_empty(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv')
+  return file_is_empty(this_directory + f'/problem_{problem_number}/problem_{problem_number}_timings.csv')
 
 def prepare_csv_timings_file(problem_number: int) -> None:
   if csv_timings_file_exists(problem_number):
@@ -30,10 +30,9 @@ def prepare_csv_timings_file(problem_number: int) -> None:
       if csv_timings_file_prepared(problem_number):
         return
       else:
-        raise Exception('The CSV timings file for problem {} isn\'t prepared, but also doesn\'t appear to be empty. Manual intervention required.'.format(str(problem_number)))
-  import csv
-  with open(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv', 'w', newline='') as csv_file:
-      writer = csv.writer(csv_file, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
+        raise Exception(f'The CSV timings file for problem {problem_number} isn\'t prepared, but also doesn\'t appear to be empty. Manual intervention required.')
+  with open(this_directory + f'/problem_{problem_number}/problem_{problem_number}_timings.csv', 'w', newline='') as csv_file:
+      writer = csv_writer(csv_file, delimiter = ',', quotechar = '"', quoting = QUOTE_MINIMAL)
       writer.writerow(['language', 'language_version', 'input', 'time', 'os', 'os_release', 'os_version', 'machine', 'processor', 'cpu_freq', 'memory', 'timestamp'])
 
 def append_data_to_csv_timings_file(
@@ -45,13 +44,11 @@ def append_data_to_csv_timings_file(
   timestamp: float
 ) -> None:
   prepare_csv_timings_file(problem_number)
-  import os
-  import json
   try:
-    env_file = open(os.path.dirname(__file__) + '/env_info.json','r')
+    env_file = open(path.dirname(__file__) + '/env_info.json','r')
   except:
     raise Exception("\x1b[1;31mEnvironment info JSON file not found, it should be in root and be called \"env_info.json\". Try running \"python3 get_env.py\" first.\x1b[0m")
-  environment = json.loads(env_file.read())
+  environment = loads(env_file.read())
   env_file.close()
   operating_system = environment['os']
   os_release = environment['os_release']
@@ -60,15 +57,14 @@ def append_data_to_csv_timings_file(
   processor = environment['processor']
   cpu_freq = environment['cpu_freq']
   memory = environment['memory']
-  import csv
-  with open(this_directory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '_timings.csv', 'a', newline='') as csv_file:
-      writer = csv.writer(csv_file, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
+  with open(this_directory + f'/problem_{problem_number}/problem_{problem_number}_timings.csv', 'a', newline='') as csv_file:
+      writer = csv_writer(csv_file, delimiter = ',', quotechar = '"', quoting = QUOTE_MINIMAL)
       writer.writerow([language,language_version,input,time,operating_system,os_release,os_version,machine,processor,cpu_freq,memory,timestamp])
 
 with open('languages.json', 'r') as im:
   langs=im.read()
 
-languages = json.loads(langs)
+languages = loads(langs)
 
 language_extensions = []
 
@@ -76,48 +72,43 @@ for language in languages:
   language_extensions.extend(language.get('extensions'))
 
 def file_exists(filepath):
-  return os.path.isfile(filepath)
+  return path.isfile(filepath)
 
 def markdown_file_exists(problem_number):
-  return file_exists(workingdirectory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '.md')
+  return file_exists(workingdirectory + f'/problem_{problem_number}/problem_{problem_number}.md')
 
 def file_is_empty(filename):
   if file_exists(filename):
-    return os.stat(filename).st_size == 0
+    return stat(filename).st_size == 0
   return False
 
 def markdown_file_is_empty(problem_number):
-  return file_is_empty(workingdirectory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + '.md')
+  return file_is_empty(workingdirectory + f'/problem_{problem_number}/problem_{problem_number}.md')
 
 def code_files_exist(problem_number):
   for key in language_extensions.keys():
-    filepath = workingdirectory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + str(key)
+    filepath = workingdirectory + f'/problem_{problem_number}/problem_{problem_number}{key}'
     if file_exists(filepath) and not file_is_empty(filepath):
       return True
   return False
 
 def code_file_exists(problem_number,language):
   for extension in list(l['extensions'] for l in languages if l['name'] == language)[0]:
-    filepath = workingdirectory + '/problem_' + str(problem_number) + '/problem_' + str(problem_number) + str(extension)
+    filepath = workingdirectory + f'/problem_{problem_number}/problem_{problem_number}{extension}'
     if file_exists(filepath) and not file_is_empty(filepath):
       return True
   return False
 
 def get_file_contents(filepath):
-  f = open(filepath,'r')
-  if f.mode == 'r':
-    contents = f.read()
-    return contents
+  with open(filepath,'r') as file:
+    return file.read()
 
 def get_markdown_file_contents(problem_number):
-  os.chdir(workingdirectory + '/problem_' + str(problem_number))
-  fi = open('problem_' + str(problem_number) + '.md','r')
-  if fi.mode == 'r':
-    contents = fi.read()
-    return contents
+  filepath = this_directory + f'/problem_{problem_number}/problem_{problem_number}.md'
+  return get_file_contents(filepath)
 
 def main():
-  parser = argparse.ArgumentParser(description = 'This file contains all of the necessary file operations to keep this repository operating.')
+  parser = ArgumentParser(description = 'This file contains all of the necessary file operations to keep this repository operating.')
   parser.add_argument('-c', '--csv', action = "store_true", help = 'Set this option to tell the program you are updating the CSV')
   parser.add_argument('-n', '--problem_number', type = int, help = 'The number of the problem that you wish to update')
   parser.add_argument('-i', '--input', type = int, help = 'The input provided to the function for solving the problem')
@@ -139,4 +130,5 @@ def main():
   return None
 
 if __name__ == '__main__':
-  main()
+  print(get_markdown_file_contents(1))
+  # main()
