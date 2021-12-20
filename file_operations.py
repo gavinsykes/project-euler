@@ -130,5 +130,4 @@ def main():
   return None
 
 if __name__ == '__main__':
-  print(get_markdown_file_contents(1))
-  # main()
+  main()
