@@ -12,7 +12,7 @@ def main():
   cores = cpu_count()
   mem = virtual_memory()
 
-  environment = {'os':u_name.system,'os_release':u_name.release,'os_version':u_name.version,'machine':u_name.machine,'processor':u_name.processor,'cpu_freq':cpu.current,'memory':mem.total}
+  environment = {'cores':cores,'os':u_name.system,'os_release':u_name.release,'os_version':u_name.version,'machine':u_name.machine,'processor':u_name.processor,'cpu_freq':cpu.current,'memory':mem.total}
 
   with open('env_info.json','w') as env_file:
     env_file.write(dumps(environment))
