@@ -9,12 +9,7 @@ define("CLI", defined("STDIN")
 
 function full_print(string $challenge,$fun,int $arg): void {
     $file_path = preg_split("/\\\\|\//",debug_backtrace()[0]["file"]);
-    var_dump($file_path);
-    var_dump($file_path[count($file_path) - 1]);
-    var_dump(explode("_",$file_path[count($file_path) - 1])[1]);
-    var_dump(explode(".",explode("_",$file_path[count($file_path) - 1])[1]));
     $problem_number = explode(".",explode("_",$file_path[count($file_path) - 1])[1])[0];
-    echo $problem_number;
     $timing = [
         "start"  => microtime(true),
         "finish" => NULL
@@ -27,7 +22,6 @@ function full_print(string $challenge,$fun,int $arg): void {
     $timing['finish'] = microtime(true);
     $time_taken = $timing["finish"] - $timing["start"];
     $timestamp = $timing["start"];
-    echo $challenge . PHP_EOL;
     echo sprintf("Start time: %s",$timing["start"]) . PHP_EOL;
     echo sprintf("Result: %s",$result) . PHP_EOL;
     echo sprintf("End time: %s",$timing["finish"]) . PHP_EOL;
