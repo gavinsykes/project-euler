@@ -33,7 +33,7 @@ def prepare_csv_timings_file(problem_number: int) -> None:
         raise Exception(f'The CSV timings file for problem {problem_number} isn\'t prepared, but also doesn\'t appear to be empty. Manual intervention required.')
   with open(this_directory + f'/problem_{problem_number}/problem_{problem_number}_timings.csv', 'w', newline='') as csv_file:
       writer = csv_writer(csv_file, delimiter = ',', quotechar = '"', quoting = QUOTE_MINIMAL)
-      writer.writerow(['language', 'language_version', 'input', 'time', 'os', 'os_release', 'os_version', 'machine', 'processor', 'cpu_freq', 'memory', 'timestamp'])
+      writer.writerow(['language', 'language_version', 'input', 'time', 'os', 'os_release', 'os_version', 'machine', 'processor', 'cpu_freq', 'memory', 'cores','timestamp'])
 
 def append_data_to_csv_timings_file(
   problem_number: int,
@@ -57,9 +57,10 @@ def append_data_to_csv_timings_file(
   processor = environment['processor']
   cpu_freq = environment['cpu_freq']
   memory = environment['memory']
+  cores = environment['cores']
   with open(this_directory + f'/problem_{problem_number}/problem_{problem_number}_timings.csv', 'a', newline='') as csv_file:
       writer = csv_writer(csv_file, delimiter = ',', quotechar = '"', quoting = QUOTE_MINIMAL)
-      writer.writerow([language,language_version,input,time,operating_system,os_release,os_version,machine,processor,cpu_freq,memory,timestamp])
+      writer.writerow([language,language_version,input,time,operating_system,os_release,os_version,machine,processor,cpu_freq,memory,cores,timestamp])
 
 with open('languages.json', 'r') as im:
   langs=im.read()
