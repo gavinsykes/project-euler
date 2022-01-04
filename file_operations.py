@@ -1,4 +1,4 @@
-from os import chdir, getcwd, path, stat
+from os import getcwd, path, stat
 from datetime import datetime
 from json import loads
 from argparse import ArgumentParser

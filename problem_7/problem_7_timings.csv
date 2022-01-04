@@ -1,3 +1,3 @@
-language,language_version,input,time,os,os_release,os_version,machine,processor,cpu_freq,memory,timestamp
-Python,3.9.6,10001,10.550502300262451,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1630012675.6147032
-Python,3.9.6,1001,0.0749049186706543,Windows,10,10.0.19042,AMD64,"Intel64 Family 6 Model 126 Stepping 5, GenuineIntel",991.0,8356937728,1630013316.2237794
+version https://git-lfs.github.com/spec/v1
+oid sha256:8e50c59e393e52eb60466bff792b4871aedce7425205aa7b252146628fd59d0c
+size 417

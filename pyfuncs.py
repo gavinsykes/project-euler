@@ -12,20 +12,20 @@ def check_correct_answer(problem_number: int, input: int, fun: Callable) -> bool
   return expected_answer == fun(input)
 
 def fullprint(challenge: str,fun: Callable,arg) -> None:
-  import inspect
-  import time
-  import sys
+  from inspect import stack
+  from time import time, perf_counter
+  from sys import version_info
   from file_operations import prepare_csv_timings_file, append_data_to_csv_timings_file
 
-  problem_number = inspect.stack()[1][1].split('_')[-1].split('.')[0]
+  problem_number = stack()[1][1].split('_')[-1].split('.')[0]
   timing = {}
-  timestamp = time.time()
-  timing['start'] = time.perf_counter()
+  timestamp = time()
+  timing['start'] = perf_counter()
   if arg:
     result = fun(arg)
   else:
     result = fun()
-  timing['finish'] = time.perf_counter()
+  timing['finish'] = perf_counter()
   print(challenge.format(arg))
   print(f'This returns {result} in {timing["finish"]-timing["start"]} seconds!')
   if check_correct_answer(problem_number, arg, fun) is None:
@@ -34,7 +34,7 @@ def fullprint(challenge: str,fun: Callable,arg) -> None:
     return
   if check_correct_answer(problem_number, arg, fun):
     print('\033[1;32mAnswer appears to be correct, adding data to the CSV...')
-    py_v = sys.version_info
+    py_v = version_info
     prepare_csv_timings_file(problem_number)
     append_data_to_csv_timings_file(
       problem_number = problem_number,
@@ -61,9 +61,7 @@ def is_palindrome(s: any) -> bool:
   if(str(s) == str(s)[::-1]):
     return True
 
-def is_prime(n: int) -> bool:
-  import math
-  # Let's eliminate conditions where we can immediately see that n is not prime
+def is_prime(n: int) -> bool:  # Let's eliminate conditions where we can immediately see that n is not prime
   if (# n is less than 1
       n < 1 or
       # n isn't an integer

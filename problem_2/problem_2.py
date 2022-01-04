@@ -1,13 +1,11 @@
-import argparse
-import sys
-import os
+from argparse import ArgumentParser
+from sys import path as syspath
+from os import path
 
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-import pyfuncs
+syspath.append(path.dirname(path.dirname(__file__)))
+from pyfuncs import fullprint, is_even
 
-challenge = 'Find the sum of the even-valued Fibonacci terms up to {}:'
-
-parser = argparse.ArgumentParser(description = 'Find the sum of the even-valued Fibonacci terms up to a given number.')
+parser = ArgumentParser(description = 'Find the sum of the even-valued Fibonacci terms up to a given number.')
 parser.add_argument('--num', default = 4000000, type = int, help = 'Insert the number here, it must be a positive integer. It defaults to 4000000 to correspond with the Project Euler Problem at https://projecteuler.net/problem=2')
 x = parser.parse_args().num
 
@@ -21,11 +19,11 @@ if (not isinstance(x,int)):
 def euler_2(n):
   result = 0
   i = 1
-  while (fibonacci(i) < n):
-    i+=1
+  while (fibonacci(i) <= n):
     f = fibonacci(i)
-    if (not(f & 1)):
+    if is_even(f):
       result += f
+    i+=1
 
   return result
 
@@ -43,4 +41,9 @@ def fibonacci(n):
 
   return fibarray[n-1]
 
-pyfuncs.fullprint(challenge,euler_2,x,__file__)
+def main():
+  challenge = f'Find the sum of the even-valued Fibonacci terms up to {x}:'
+  fullprint(challenge, euler_2, x)
+
+if __name__ == '__main__':
+  main()

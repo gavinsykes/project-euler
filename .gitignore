@@ -3,6 +3,7 @@ github_credentials.json
 wp_credentials.json
 env_info.json
 .node_modules
+.DS_Store
 
 *.class
 COMPILED*
