@@ -22,7 +22,11 @@ def main():
   except FileNotFoundError:
     current_expected_answers = []
   finally:
-    for i in range(1,1001):
+    print("You will now be asked for the range of inputs for which you wish to generate the answers, starting with, rather creatively, the starting point, then the end point, then the step size (usually 1 but you'll want to make it bigger for really big ranges going into the millions).")
+    starting_point = int(input("Where would you like to start? (Usually 1) "))
+    end_point = int(input("Where would you like to end? "))
+    step_size = int(input("What should the step size be? (Usually 1 or a power of 10) "))
+    for i in range(starting_point,end_point+1,step_size):
       current_expected_answers.append({'input':i,'expected_answer':euler_function(i)})
     with open(path.dirname(__file__) + f'/problem_{problem_number}/problem_{problem_number}_expected_answers.json','w') as updated_answers_file:
       updated_answers_file.write(dumps(current_expected_answers))
