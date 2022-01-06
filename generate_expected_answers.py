@@ -1,6 +1,36 @@
 from json import loads, dumps
 from os import path
 from sys import path as syspath
+from typing import Iterable
+from time import sleep
+
+def progressBar(iterable, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
+    """
+    Call in a loop to create terminal progress bar
+    @params:
+        iterable    - Required  : iterable object (Iterable)
+        prefix      - Optional  : prefix string (Str)
+        suffix      - Optional  : suffix string (Str)
+        decimals    - Optional  : positive number of decimals in percent complete (Int)
+        length      - Optional  : character length of bar (Int)
+        fill        - Optional  : bar fill character (Str)
+        printEnd    - Optional  : end character (e.g. "\r", "\r\n") (Str)
+    """
+    total = len(iterable)
+    # Progress Bar Printing Function
+    def printProgressBar (iteration):
+        percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+        filledLength = int(length * iteration // total)
+        bar = fill * filledLength + '-' * (length - filledLength)
+        print(f'\r{prefix} |{bar}| {percent}% {suffix}', end = printEnd)
+    # Initial Call
+    printProgressBar(0)
+    # Update Progress Bar
+    for i, item in enumerate(iterable):
+        yield item
+        printProgressBar(i + 1)
+    # Print New Line on Complete
+    print()
 
 def main():
   problem_number = int(input("Which problem number do you want to generate the answers for? "))
@@ -26,7 +56,8 @@ def main():
     starting_point = int(input("Where would you like to start? (Usually 1) "))
     end_point = int(input("Where would you like to end? "))
     step_size = int(input("What should the step size be? (Usually 1 or a power of 10) "))
-    for i in range(starting_point,end_point+1,step_size):
+    input_range = range(starting_point,end_point+1,step_size)
+    for i in progressBar(input_range, prefix = "Progress:"):
       current_expected_answers.append({'input':i,'expected_answer':euler_function(i)})
     with open(path.dirname(__file__) + f'/problem_{problem_number}/problem_{problem_number}_expected_answers.json','w') as updated_answers_file:
       updated_answers_file.write(dumps(current_expected_answers))
