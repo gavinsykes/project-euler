@@ -6,15 +6,15 @@
 # personal_access_token: obtained from https://github.com/settings/tokens                            #
 ######################################################################################################
 
-import json
+from json import loads
 
 def get_credentials():
-    with open('github_credentials.json', 'r') as json_file:
-        creds=json_file.read()
+  with open('github_credentials.json', 'r') as json_file:
+    creds=json_file.read()
 
-    credentials = json.loads(creds)
-    json_file.close()
-    return credentials
+  credentials = loads(creds)
+  json_file.close()
+  return credentials
 
 credentials = get_credentials()
 
@@ -23,5 +23,8 @@ GITHUB_API = credentials['github_api']
 HEADERS = 'Authorization: token {}'.format(credentials['personal_access_token'])
 PARAMS = ''
 
+def main():
+  print("This script is not to be run standalone.")
+
 if __name__ == '__main__':
-    print("This script is not to be run standalone.")
+  main()
