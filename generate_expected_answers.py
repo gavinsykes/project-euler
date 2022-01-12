@@ -1,8 +1,6 @@
 from json import loads, dumps
 from os import path
 from sys import path as syspath
-from typing import Iterable
-from time import sleep
 
 def progressBar(iterable, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
     """
