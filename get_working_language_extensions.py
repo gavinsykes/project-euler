@@ -13,6 +13,7 @@ except:
   exit(1)
 
 from languages import working_languages
+
 # Make sure you get the raw URLs, not the URLs of the pages Git shows you!
 
 language_gist_url = "https://gist.githubusercontent.com/ppisarczyk/43962d06686722d26d176fad46879d41/raw/211547723b4621a622fc56978d74aa416cbd1729/Programming_Languages_Extensions.json"
