@@ -1,4 +1,5 @@
 __pycache__
+api_keys.json
 github_credentials.json
 wp_credentials.json
 env_info.json
