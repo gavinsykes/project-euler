@@ -1,7 +1,7 @@
 import os
 
-import updategists_config as gh_config
-import publish_to_wordpress_config as wp_config
+import updategists as gh_config
+import publish_to_wordpress as wp_config
 
 from file_operations import *
 from publish_to_wordpress import *
